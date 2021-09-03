@@ -17,7 +17,7 @@ namespace Haleji.BusinessObjects
         
         [DisplayName("Item Description")]
         [MaxLength(1000, ErrorMessage ="Maximum limit is 1000 characters.")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public long Key
         {

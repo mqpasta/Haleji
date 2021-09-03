@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -165,6 +166,14 @@ namespace Irada.Common.DAL
         public static List<SqlParameter> GetEmptyParams()
         {
             return new List<SqlParameter>();
+        }
+
+        public static SqlParameter CreateSqlParam(string name, object v)
+        {
+            if (v == null)
+                v = DBNull.Value;
+
+            return new SqlParameter(name, v);
         }
     }
 }

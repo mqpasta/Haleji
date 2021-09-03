@@ -23,13 +23,6 @@ namespace Haleji.Web.Controllers
         // GET: ItemController
         public ActionResult Index()
         {
-            _factory.ItemRepository.Add(new Item()
-            {
-                ItemId = 1,
-                ItemName = "tem 1",
-                Description = "no description"
-            });
-
             return View(_factory.ItemRepository.GetAll());
         }
 
@@ -78,11 +71,11 @@ namespace Haleji.Web.Controllers
             if (ModelState.IsValid)
             {
                 _factory.ItemRepository.Update(item);
-                return RedirectToAction(nameof(Index));
+                return NoContent();
             }
             else
             {
-                return BadRequest();
+                return PartialView(ViewHelper.EDIT_PARTIAL, item);
             }
         }
 
@@ -105,8 +98,15 @@ namespace Haleji.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Item item)
         {
-            _factory.ItemRepository.Remove(item);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                _factory.ItemRepository.Remove(item);
+                return NoContent();
+            }
+            catch
+            {
+                return PartialView(ViewHelper.DELETE_PARTIAL, item);
+            }
         }
     }
 }

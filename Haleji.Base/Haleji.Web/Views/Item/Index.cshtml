@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Haleji.BusinessObjects.Item>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Items";
 }
 
 <h1>Items</h1>
@@ -26,9 +26,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Key)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -44,9 +41,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Key)
                 </td>
                 <td>
                     <button type="button" class="btn btn-link" data-toggle="ajax-modal"

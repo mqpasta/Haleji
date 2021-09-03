@@ -24,7 +24,14 @@ namespace Haleji.SqlRepository
 
         public IDepartmentRepository DepartmentRepository => throw new NotImplementedException();
 
-        public IItemRepository ItemRepository => throw new NotImplementedException();
+        public IItemRepository ItemRepository {
+            get {
+                if (_itemRepository == null)
+                    _itemRepository = new SqlItemRepository();
+
+                return _itemRepository;
+            }
+        }
 
         public IMovementRepository MovementRepository => throw new NotImplementedException();
 

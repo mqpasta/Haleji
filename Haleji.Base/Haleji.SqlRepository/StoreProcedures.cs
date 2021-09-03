@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Irada.Common.DAL;
 using System.Data.SqlClient;
 
 namespace Haleji.SqlRepository
@@ -30,6 +31,35 @@ namespace Haleji.SqlRepository
             {
                 return new SqlParameter(LocationName, name);
             }
+        }
+
+        public struct Item
+        {
+            public const string Insert = "spInsertItem";
+            public const string Update = "spUpdateItem";
+            public const string Delete = "spDeleteItem";
+            public const string GetAll = "spGetAllItem";
+            public const string Search = "spSearchItem";
+
+            private const string ItemId = "@ItemId";
+            private const string ItemName = "@ItemName";
+            private const string ItemDesc = "@ItemDescription";
+
+            public static SqlParameter GetItemId(object v)
+            {
+                return SQLHelper.CreateSqlParam(ItemId, v);
+            }
+
+            public static SqlParameter GetItemName(object v)
+            {
+                return SQLHelper.CreateSqlParam(ItemName, v);
+            }
+
+            public static SqlParameter GetItemDescr(object v)
+            {
+                return SQLHelper.CreateSqlParam(ItemDesc, v);
+            }
+
         }
     }
 }
