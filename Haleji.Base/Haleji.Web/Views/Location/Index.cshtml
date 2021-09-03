@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Haleji.BusinessObjects.Location>
+
+@{
+    ViewData["Title"] = "Locations";
+}
+
+<h1>Locations</h1>
+
+<div id="ModalPlaceHolder"></div>
+
+<p>
+    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+            data-target="#createLocation" data-url="@Url.Action("Create", "Location")">
+        Create
+    </button>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationName)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#editLocation" data-url="@Url.Action("Edit", "Location", new { id = item.LocationId })">
+                        Edit
+                    </button> |
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#deleteLocation" data-url="@Url.Action("Delete", "Location", new { id = item.LocationId })">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

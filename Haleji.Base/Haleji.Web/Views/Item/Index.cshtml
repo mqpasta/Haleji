@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Haleji.BusinessObjects.Item>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Items</h1>
+
+<div id="ModalPlaceHolder"></div>
+
+<p>
+    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+            data-target="#createItem" data-url="@Url.Action("Create", "Item")">
+        Create
+    </button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Key)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Key)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#editItem" data-url="@Url.Action("Edit", "Item", new { id = item.ItemId })">
+                        Edit
+                    </button> |
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#deleteItem" data-url="@Url.Action("Delete", "Item",new { id = item.ItemId})">
+                        Delete
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

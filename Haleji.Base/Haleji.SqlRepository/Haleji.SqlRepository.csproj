@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Haleji.BusinessObjects\Haleji.BusinessObjects.csproj" />
+    <ProjectReference Include="..\Haleji.RepositoryBase\Haleji.RepositoryBase.csproj" />
+    <ProjectReference Include="..\qaimpasta.Common.DAL\Irada.Common.DAL.csproj" />
+  </ItemGroup>
+
+</Project>
