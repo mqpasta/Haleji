@@ -22,7 +22,16 @@ namespace Haleji.SqlRepository
             }
         }
 
-        public IDepartmentRepository DepartmentRepository => throw new NotImplementedException();
+        public IDepartmentRepository DepartmentRepository
+        {
+            get
+            {
+                if (_departmentRepository == null)
+                    _departmentRepository = new SqlDepartmentRepository();
+
+                return _departmentRepository;
+            }
+        }
 
         public IItemRepository ItemRepository {
             get {
@@ -35,12 +44,30 @@ namespace Haleji.SqlRepository
 
         public IMovementRepository MovementRepository => throw new NotImplementedException();
 
-        public IPersonRepository PersonRepository => throw new NotImplementedException();
+        public IPersonRepository PersonRepository
+        {
+            get
+            {
+                if (_personRepository == null)
+                    _personRepository = new SqlPersonRepository();
+
+                return _personRepository;
+            }
+        }
 
         public IPurchaseRepository PurchaseRepository => throw new NotImplementedException();
 
         public IStockRepository StockRepository => throw new NotImplementedException();
 
-        public IVendorRepository VendorRepository => throw new NotImplementedException();
+        public IVendorRepository VendorRepository
+        {
+            get
+            {
+                if (_vendorRepository == null)
+                    _vendorRepository = new SqlVendorRepository();
+
+                return _vendorRepository;
+            }
+        }
     }
 }

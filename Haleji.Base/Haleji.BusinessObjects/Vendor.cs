@@ -19,8 +19,12 @@ namespace Haleji.BusinessObjects
         public string Address { get; set; }
 
         [DisplayName("Contact Person")]
-        [MaxLength(200, ErrorMessage = "Maximum limit is 500 characters.")]
+        [MaxLength(200, ErrorMessage = "Maximum limit is 200 characters.")]
         public string ContactPerson { get; set; }
+
+        [DisplayName("Contact Number")]
+        [MaxLength(50, ErrorMessage = "Maximum limit is 50 characters.")]
+        public string Contact { get; set; }
 
         [DisplayName("Note")]
         [MaxLength(1000, ErrorMessage = "Maximum limit is 1000 characters.")]

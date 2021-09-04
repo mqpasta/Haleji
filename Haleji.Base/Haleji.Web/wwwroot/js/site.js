@@ -35,6 +35,9 @@ $(function () {
                 location.reload();
                 return;
             }
+            else {
+                console.log(data);
+            }
             return;
 
         }).fail(function (jqXHR, textStatus, errorThrown) {
