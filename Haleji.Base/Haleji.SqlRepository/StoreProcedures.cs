@@ -11,6 +11,124 @@ namespace Haleji.SqlRepository
 {
     internal struct StoredProcedures
     {
+        internal enum TransType
+        {
+            InStock = 1,
+            Issueed = 2,
+            Scrap = 3,
+            OutStock = 4
+        }
+
+        public static class Movement
+        {
+            public const string Insert = "spInsertMovement";
+            public const string Update = "spUpdateMovement";
+            public const string Delete = "spDeleteMovement";
+            public const string GetAll = "spGetAllMovement";
+            public const string Search = "spSearchMovement";
+
+            public static SqlParameter GetMovementId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@MovementId", v);
+            }
+
+            public static SqlParameter GetTransType(object v)
+            {
+                return SQLHelper.CreateSqlParam("@TransTypeId", v);
+            }
+
+            public static SqlParameter GetPersonId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@PersonId", v);
+            }
+
+            public static SqlParameter GetLocationId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@LocationId", v);
+            }
+
+            public static SqlParameter GetPurchaseId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@PurchaseId", v);
+            }
+            public static SqlParameter GetMovDate(object v)
+            {
+                return SQLHelper.CreateSqlParam("@MovDate", v);
+            }
+
+            public static SqlParameter GetIsActive(object v)
+            {
+                return SQLHelper.CreateSqlParam("@IsActive", v);
+            }
+
+            public static SqlParameter GetParentMovement(object v)
+            {
+                return SQLHelper.CreateSqlParam("@ParentMovement", v);
+            }
+        }
+
+        internal static class Purchase
+        {
+            public const string Insert = "spInsertPurchase";
+            public const string Update = "spUpdatePurchase";
+            public const string Delete = "spDeletePurchase";
+            public const string GetAll = "spGetAllPurchase";
+            public const string Search = "spSearchPurchase";
+
+            public static SqlParameter GetPurchaseId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@PurchaseId", v);
+            }
+
+            public static SqlParameter GetItemId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@ItemId", v);
+            }
+
+            public static SqlParameter GetVendorId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@VendorId", v);
+            }
+
+            public static SqlParameter GetPurchaseDate(object v)
+            {
+                return SQLHelper.CreateSqlParam("@PurchaseDate", v);
+            }
+
+            public static SqlParameter GetStartDate(object v)
+            {
+                return SQLHelper.CreateSqlParam("@StartDate", v);
+            }
+            public static SqlParameter GetEndDate(object v)
+            {
+                return SQLHelper.CreateSqlParam("@EndDate", v);
+            }
+
+            public static SqlParameter GetPONumber(object v)
+            {
+                return SQLHelper.CreateSqlParam("@PONumber", v);
+            }
+
+            public static SqlParameter GetInvoiceNumber(object v)
+            {
+                return SQLHelper.CreateSqlParam("@InvoiceNumber", v);
+            }
+
+            public static SqlParameter GetDescription(object v)
+            {
+                return SQLHelper.CreateSqlParam("@Description", v);
+            }
+
+            public static SqlParameter GetTagNo(object v)
+            {
+                return SQLHelper.CreateSqlParam("@TagNo", v);
+            }
+
+            public static SqlParameter GetTransType(object v)
+            {
+                return SQLHelper.CreateSqlParam("@TransTypeId", v);
+            }
+        }
         internal static class Vendor
         {
             public const string Insert = "spInsertVendor";

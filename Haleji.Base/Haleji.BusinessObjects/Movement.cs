@@ -12,16 +12,19 @@ namespace Haleji.BusinessObjects
 
         [DisplayName("Transaction Type")]
         [Required]
-        public TransType TransactionType { get; set; }
+        public long TransactionTypeId { get; set; }
 
         [DisplayName("Person")]
-        public Person Person { get; set; }
+        public long? PersonId { get; set; }
+        public string? PersonName { get; set; }
 
         [DisplayName("Location")]
-        public Location Location { get; set; }
+        public long? LocationId { get; set; }
+        public string LocationName { get; set; }
 
         [DisplayName("Purchase Order")]
-        public Purchase Purchase { get; set; }
+        public long? PurchaseId { get; set; }
+        public string? ItemName { get; set; }
 
         [DisplayName("Movement Date")]
         [Required]
@@ -30,7 +33,7 @@ namespace Haleji.BusinessObjects
         [DisplayName("Active")]
         [Required]
         public bool IsActive { get; set; }
-        public Movement ParentMovement { get; set; }
+        public long? ParentMovementId { get; set; }
 
         public long Key
         {

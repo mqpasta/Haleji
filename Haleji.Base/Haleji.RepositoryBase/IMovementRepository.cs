@@ -10,5 +10,13 @@ namespace Haleji.RepositoryBase
 {
     public interface IMovementRepository : IGenericRepository<Movement>
     {
+        List<Movement> GetAllIssue();
+
+        List<Movement> GetAllInStock();
+
+        List<Movement> GetAllScrap();
+
+        List<Movement> GetAllOutStock();
+
     }
 }

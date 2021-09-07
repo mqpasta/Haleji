@@ -11,10 +11,10 @@ namespace Haleji.BusinessObjects
 
         [DisplayName("Department Name")]
         public long? DepartmentId { get; set; }
-
+#nullable enable
         [DisplayName("Department")]
         public string? DepartmentName { get; set; }
-
+#nullable disable
         [DisplayName("Name")]
         [MaxLength(200, ErrorMessage ="Maximum limit is 200 characters.")]
         [Required]
@@ -22,11 +22,14 @@ namespace Haleji.BusinessObjects
 
         [DisplayName("Ext. Number")]
         [MaxLength(100, ErrorMessage ="Maximum limit is 100 characters.")]
+
+#nullable enable
         public string? Ext { get; set; }
         
         [DisplayName("Contact Number")]
         [MaxLength(100, ErrorMessage ="Maximum limit is 100 characters.")]
         public string? Contact { get; set; }
+#nullable disable
 
         [DisplayName("Active")]
         [Required]

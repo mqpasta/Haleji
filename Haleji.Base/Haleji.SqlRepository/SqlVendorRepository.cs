@@ -17,12 +17,14 @@ namespace Haleji.SqlRepository
 
         public void Add(Vendor entity)
         {
-            List<SqlParameter> ps = new List<SqlParameter>();
-            ps.Add(StoredProcedures.Vendor.GetVendorName(entity.VendorName));
-            ps.Add(StoredProcedures.Vendor.GetAddress(entity.Address));
-            ps.Add(StoredProcedures.Vendor.GetContactPerson(entity.ContactPerson));
-            ps.Add(StoredProcedures.Vendor.GetContact(entity.Contact));
-            ps.Add(StoredProcedures.Vendor.GetNote(entity.Note));
+            List<SqlParameter> ps = new List<SqlParameter>
+            {
+                StoredProcedures.Vendor.GetVendorName(entity.VendorName),
+                StoredProcedures.Vendor.GetAddress(entity.Address),
+                StoredProcedures.Vendor.GetContactPerson(entity.ContactPerson),
+                StoredProcedures.Vendor.GetContact(entity.Contact),
+                StoredProcedures.Vendor.GetNote(entity.Note)
+            };
 
             using (SqlConnection con = new SqlConnection(_constr))
             {
@@ -36,10 +38,10 @@ namespace Haleji.SqlRepository
 
         public IEnumerable<Vendor> GetAll()
         {
-            List<Vendor> vendors = new List<Vendor>();
-            List<SqlParameter> ps = new List<SqlParameter>();
+            List<Vendor> vendors = new();
+            List<SqlParameter> ps = new();
 
-            using (SqlConnection con = new SqlConnection(_constr))
+            using (SqlConnection con = new(_constr))
             {
                 con.Open();
                 DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Vendor.GetAll, ps.ToArray());
