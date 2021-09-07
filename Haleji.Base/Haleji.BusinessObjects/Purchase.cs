@@ -13,32 +13,34 @@ namespace Haleji.BusinessObjects
         [DisplayName("Item")]
         [Required]
         public long ItemId { get; set; }
-
+        [DisplayName("Item")]
         public string ItemName { get; set; }
 
         [DisplayName("Vendor")]
         [Required]
         public long VendorId { get; set; }
+
+        [DisplayName("Vendor")]
         public string VendorName { get; set; }
 
         [DisplayName("Purchase Date")]
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime PurchaseDate { get; set; }
 
-        [DisplayName("Warranty Start Date")]
+        [DisplayName("Warranty")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? StartDate { get; set; }
 
         [DisplayName("Warranty End Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? EndDate { get; set; }
 
 #nullable enable
-        [DisplayName("Purchase Order Number")]
+        [DisplayName("PO Number")]
         public string? PONumber { get; set; }
 
         [DisplayName("Invoice Number")]

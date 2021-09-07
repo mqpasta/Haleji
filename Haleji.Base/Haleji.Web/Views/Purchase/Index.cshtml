@@ -6,6 +6,8 @@
 
 <h1>Purchases</h1>
 
+<div id="ModalPlaceHolder"></div>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -31,10 +33,6 @@
                 @Html.DisplayNameFor(model => model.StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
-
-            <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th></th>
@@ -48,7 +46,10 @@
                     @Html.DisplayFor(modelItem => item.PurchaseDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ItemName)
+                    <span>
+                        @Html.DisplayFor(modelItem => item.ItemName)
+                        (@Html.DisplayFor(modelItem => item.TagNo))
+                    </span>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.VendorName)
@@ -60,18 +61,18 @@
                     @Html.DisplayFor(modelItem => item.InvoiceNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
+                    @Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Key }) |
+                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#deletePurchase" data-url="@Url.Action("Delete", "Purchase", new { id = item.Key})">
+                        Delete
+                    </button>
                 </td>
             </tr>
         }

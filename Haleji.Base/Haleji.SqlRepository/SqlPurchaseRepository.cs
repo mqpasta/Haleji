@@ -44,7 +44,7 @@ namespace Haleji.SqlRepository
             List<Purchase> purchases = new List<Purchase>();
 
             List<SqlParameter> ps = new List<SqlParameter>();
-            using (SqlConnection con = new SqlConnection())
+            using (SqlConnection con = new SqlConnection(_constr))
             {
                 con.Open();
                 DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Purchase.GetAll, ps.ToArray());
@@ -70,7 +70,7 @@ namespace Haleji.SqlRepository
             var pd = r["PurchaseDate"];
             var sd = r["StartDate"];
             var ed = r["EndDate"];
-            var po = r["PONnumber"];
+            var po = r["PONumber"];
             var io = r["InvoiceNumber"];
             var d = r["Description"];
             var t = r["TagNo"];
@@ -82,13 +82,9 @@ namespace Haleji.SqlRepository
                 VendorId = Convert.ToInt64(vid),
                 ItemName = Convert.ToString(iname),
                 VendorName = Convert.ToString(vname),
-                PurchaseDate = DateTime.ParseExact(Convert.ToString(pd), "s", CultureInfo.InvariantCulture),
-                StartDate = DBNull.Value.Equals(sd) ? null : DateTime.ParseExact(
-                                                            Convert.ToString(sd), "s",
-                                                            CultureInfo.InvariantCulture),
-                EndDate = DBNull.Value.Equals(ed) ? null : DateTime.ParseExact(
-                                                            Convert.ToString(ed), "s",
-                                                            CultureInfo.InvariantCulture),
+                PurchaseDate = Convert.ToDateTime(pd),
+                StartDate = DBNull.Value.Equals(sd) ? null : Convert.ToDateTime(sd),
+                EndDate = DBNull.Value.Equals(ed) ? null : Convert.ToDateTime(ed),
                 PONumber = DBNull.Value.Equals(po) ? null : Convert.ToString(po),
                 InvoiceNumber = DBNull.Value.Equals(io) ? null : Convert.ToString(io),
                 Description = DBNull.Value.Equals(d) ? null : Convert.ToString(d),
@@ -99,12 +95,15 @@ namespace Haleji.SqlRepository
         public Purchase GetById(long id)
         {
             Purchase p = new Purchase();
-            List<SqlParameter> ps = new List<SqlParameter>();
+            List<SqlParameter> ps = new()
+            {
+                StoredProcedures.Purchase.GetPurchaseId(id)
+            };
 
             using (SqlConnection con = new SqlConnection(_constr))
             {
                 con.Open();
-                DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Purchase.GetAll, ps.ToArray());
+                DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Purchase.Search, ps.ToArray());
                 con.Close();
 
                 if (ds.Tables.Count > 0)

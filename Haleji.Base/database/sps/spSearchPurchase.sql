@@ -35,7 +35,7 @@ AS
 		AND (@EndDate IS NULL OR StartDate = DATEADD(dd, DATEDIFF(dd, 0, @EndDate), 0))
 		AND (@PONumber IS NULL OR PONumber Like '%'+@PONumber+'%')
 		AND (@InvoiceNumber IS NULL OR @InvoiceNumber Like '%'+@InvoiceNumber +'%')
-		AND (@Description IS NULL OR P.Description LIKE '%'+@VendorId+'%')
+		AND (@Description IS NULL OR P.Description LIKE '%'+@Description+'%')
 		AND (@TagNo IS NULL OR P.TagNo LIKE '%'+@TagNo+'%')
 GO
 

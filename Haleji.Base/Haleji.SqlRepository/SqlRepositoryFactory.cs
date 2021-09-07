@@ -55,7 +55,16 @@ namespace Haleji.SqlRepository
             }
         }
 
-        public IPurchaseRepository PurchaseRepository => throw new NotImplementedException();
+        public IPurchaseRepository PurchaseRepository
+        {
+            get
+            {
+                if (_purchaseRepository == null)
+                    _purchaseRepository = new SqlPurchaseRepository();
+
+                return _purchaseRepository;
+            }
+        }
 
         public IStockRepository StockRepository => throw new NotImplementedException();
 
