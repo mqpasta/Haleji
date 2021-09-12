@@ -21,9 +21,11 @@ CREATE PROCEDURE dbo.spInsertMovement
 	@IsActive bit ,
 	@ParentMovement bigint = NULL
 AS
+
 	INSERT INTO Movement (TransTypeId, PersonId, LocationId, PurchaseId,
 					MovDate, IsActive, ParentMovement)
 		VALUES (@TransTypeId, @PersonId, @LocationId, @PurchaseId,
 				@MovDate, @IsActive, @ParentMovement)
+
 GO
 

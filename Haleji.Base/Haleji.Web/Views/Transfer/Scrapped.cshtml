@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Haleji.BusinessObjects.Movement>
+
+@{
+    ViewData["Title"] = "Discarded";
+}
+
+<h1>Received Items</h1>
+
+<div id="ModalPlaceHolder"></div>
+
+<partial name="_TransferHeader" />
+
+<p>
+    <a asp-action="Discarded">Scrap an Item</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+
+                <td>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#deleteTransferItem" data-url="@Url.Action("Delete", "Transfer",new { id = item.Key})">
+                        Delete
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

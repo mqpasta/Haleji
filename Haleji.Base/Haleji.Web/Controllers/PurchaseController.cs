@@ -22,7 +22,9 @@ namespace Haleji.Web.Controllers
         // GET: PurchaseController
         public ActionResult Index()
         {
-            return View(_factory.PurchaseRepository.GetAll()); ;
+            return View(_factory.PurchaseRepository.GetByTransactionType(
+                Convert.ToInt32(TransactionType.Issued)
+                ));
         }
 
         // GET: PurchaseController/Create
@@ -41,6 +43,7 @@ namespace Haleji.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                p.CurrentTransType = Convert.ToInt32(TransactionType.Available);
                 _factory.PurchaseRepository.Add(p);
                 return RedirectToAction(nameof(Index));
             }
@@ -114,13 +117,13 @@ namespace Haleji.Web.Controllers
                 try
                 {
                     _factory.PurchaseRepository.Remove(p);
+                    return NoContent();
                 }
                 catch (Exception e)
                 {
                     ModelState.AddModelError("Error", e.Message);
                     return PartialView(ViewHelper.DELETE_PARTIAL, p);
                 }
-                return RedirectToAction(nameof(Index));
             }
             else
             {

@@ -16,7 +16,8 @@ namespace Haleji.SqlRepository
             InStock = 1,
             Issueed = 2,
             Scrap = 3,
-            OutStock = 4
+            OutStock = 4,
+            Receive = 5
         }
 
         public static class Movement
@@ -123,11 +124,12 @@ namespace Haleji.SqlRepository
             {
                 return SQLHelper.CreateSqlParam("@TagNo", v);
             }
-
+            
             public static SqlParameter GetTransType(object v)
             {
                 return SQLHelper.CreateSqlParam("@TransTypeId", v);
             }
+
         }
         internal static class Vendor
         {

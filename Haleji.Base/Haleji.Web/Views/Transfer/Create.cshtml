@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Haleji.BusinessObjects.Purchase>
+
+@{
+    ViewData["Title"] = "Transfer Request";
+}
+
+<h1>Transfer an Item</h1>
+
+<div id="ModalPlaceHolder"></div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName) - (@Html.DisplayFor(modelItem => item.TagNo))
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#deleteItem" data-url="@Url.Action("TransferItem", "Transfer",new { id = item.PurchaseId})">
+                        Issue
+                    </button>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#deleteItem" data-url="@Url.Action("DiscardItem", "Transfer" ,new { id=item.PurchaseId})">
+                        Discard
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

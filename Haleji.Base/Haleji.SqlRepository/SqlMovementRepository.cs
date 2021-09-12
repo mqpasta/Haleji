@@ -49,19 +49,20 @@ namespace Haleji.SqlRepository
             return movements;
         }
 
-        public List<Movement> GetAllIssue()
+        public List<Movement> GetAllIssue(bool isActive = true)
         {
-            List<Movement> movements = GetAllMovements(StoredProcedures.TransType.Issueed);
+            List<Movement> movements = GetAllMovements(StoredProcedures.TransType.Issueed, isActive);
 
             return movements;
         }
 
-        private List<Movement> GetAllMovements(StoredProcedures.TransType type)
+        private List<Movement> GetAllMovements(StoredProcedures.TransType type, bool isActive = false)
         {
             List<Movement> movements = new List<Movement>();
             List<SqlParameter> pm = new()
             {
-                StoredProcedures.Movement.GetTransType(Convert.ToInt32(type))
+                StoredProcedures.Movement.GetTransType(Convert.ToInt32(type)),
+                StoredProcedures.Movement.GetIsActive(Convert.ToInt32(isActive))
             };
 
             using (SqlConnection con = new SqlConnection(_constr))
@@ -87,7 +88,7 @@ namespace Haleji.SqlRepository
             var lname = r["LocationName"];
             var pid = r["PurchaseId"];
             var iname = r["ItemName"];
-            var parent = r["ParentMovementId"];
+            var parent = r["ParentMovement"];
 
             return new Movement()
             {
@@ -107,7 +108,7 @@ namespace Haleji.SqlRepository
 
         public List<Movement> GetAllOutStock()
         {
-            List<Movement> movements = GetAllMovements(StoredProcedures.TransType.OutStock);
+            List<Movement> movements = GetAllMovements(StoredProcedures.TransType.OutStock, true);
 
             return movements;
         }
@@ -152,7 +153,7 @@ namespace Haleji.SqlRepository
             using (SqlConnection con = new SqlConnection(_constr))
             {
                 con.Open();
-                SQLHelper.Execute(con, StoredProcedures.Movement.Update, pm.ToArray());
+                SQLHelper.Execute(con, StoredProcedures.Movement.Delete, pm.ToArray());
                 con.Close();
             }
         }
@@ -177,6 +178,13 @@ namespace Haleji.SqlRepository
                 SQLHelper.Execute(con, StoredProcedures.Movement.Update, pm.ToArray());
                 con.Close();
             }
+        }
+
+        public List<Movement> GetlAllReceived()
+        {
+            List<Movement> movements = GetAllMovements(StoredProcedures.TransType.Receive);
+
+            return movements;
         }
     }
 }

@@ -29,13 +29,13 @@ AS
 	BEGIN TRAN
 	INSERT INTO		Purchase (
 						ItemId, VendorId, PurchaseDate, StartDate, EndDate,
-						PONumber, InvoiceNumber, Description, TagNo)
+						PONumber, InvoiceNumber, Description, TagNo, CurrentTransType)
 					VALUES (@ItemId, @VendorId, @PurchaseDate, @StartDate, @EndDate,
-							@PONumber, @InvoiceNumber, @Description, @TagNo)
+							@PONumber, @InvoiceNumber, @Description, @TagNo, @TransTypeId)
 	SET @PurchaseId = SCOPE_IDENTITY()
 
 	INSERT INTO		Movement (TransTypeId, PurchaseId, MovDate, IsActive)
-					VALUES (@TransTypeId, @PurchaseId, @PurchaseDate, 1)
+					VALUES (@TransTypeId, @PurchaseId, @PurchaseDate, 0)
 
 	COMMIT
 

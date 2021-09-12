@@ -42,7 +42,16 @@ namespace Haleji.SqlRepository
             }
         }
 
-        public IMovementRepository MovementRepository => throw new NotImplementedException();
+        public IMovementRepository MovementRepository
+        {
+            get
+            {
+                if (_movementRepository == null)
+                    _movementRepository = new SqlMovementRepository();
+
+                return _movementRepository;
+            }
+        }
 
         public IPersonRepository PersonRepository
         {

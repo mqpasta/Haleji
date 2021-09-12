@@ -1,0 +1,50 @@
+﻿@model Haleji.BusinessObjects.Movement
+    <!-- Modal -->
+<div class="modal fade" id="scrapItem" tabindex="-1" role="dialog" aria-labelledby="scrapItemTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form asp-action="SaveScrap">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scrapItemTitle">Scrap Item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal Body -->
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input asp-for="MovementId" class="form-control" type="hidden" />
+                            <input asp-for="PurchaseId" class="form-control" type="hidden" />
+                            <input asp-for="TransactionTypeId" class="form-control" type="hidden" />
+                            <div class="form-group">
+                                <label asp-for="MovDate" class="control-label"></label>
+                                <input asp-for="MovDate" class="form-control" />
+                                <span asp-validation-for="MovDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ItemName" class="control-label"></label>
+                                <input asp-for="ItemName" class="form-control" readonly />
+                                <span asp-validation-for="ItemName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" data-save="modal">Discard</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

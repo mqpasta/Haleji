@@ -28,7 +28,7 @@ namespace Haleji.SqlRepository
                 StoredProcedures.Purchase.GetInvoiceNumber(entity.InvoiceNumber),
                 StoredProcedures.Purchase.GetDescription(entity.Description),
                 StoredProcedures.Purchase.GetTagNo(entity.TagNo),
-                StoredProcedures.Purchase.GetTransType(Convert.ToInt32(StoredProcedures.TransType.InStock))
+                StoredProcedures.Purchase.GetTransType(Convert.ToInt32(entity.CurrentTransType))
             };
 
             using (SqlConnection con = new(_constr))
@@ -74,6 +74,7 @@ namespace Haleji.SqlRepository
             var io = r["InvoiceNumber"];
             var d = r["Description"];
             var t = r["TagNo"];
+            var ct = r["CurrentTransType"];
 
             return new Purchase()
             {
@@ -88,7 +89,8 @@ namespace Haleji.SqlRepository
                 PONumber = DBNull.Value.Equals(po) ? null : Convert.ToString(po),
                 InvoiceNumber = DBNull.Value.Equals(io) ? null : Convert.ToString(io),
                 Description = DBNull.Value.Equals(d) ? null : Convert.ToString(d),
-                TagNo = Convert.ToString(t)
+                TagNo = Convert.ToString(t),
+                CurrentTransType = DBNull.Value.Equals(ct) ? null : Convert.ToInt64(ct)
             };
         }
 
@@ -146,7 +148,7 @@ namespace Haleji.SqlRepository
                 StoredProcedures.Purchase.GetInvoiceNumber(entity.InvoiceNumber),
                 StoredProcedures.Purchase.GetDescription(entity.Description),
                 StoredProcedures.Purchase.GetTagNo(entity.TagNo),
-                StoredProcedures.Purchase.GetTransType(Convert.ToInt32(StoredProcedures.TransType.InStock))
+                StoredProcedures.Purchase.GetTransType(Convert.ToInt32(entity.CurrentTransType))
             };
 
             using (SqlConnection con = new(_constr))
@@ -155,6 +157,30 @@ namespace Haleji.SqlRepository
                 SQLHelper.Execute(con, StoredProcedures.Purchase.Update, pm.ToArray());
                 con.Close();
             }
+        }
+
+        public List<Purchase> GetByTransactionType(long transType)
+        {
+            List<Purchase> purchases = new();
+            List<SqlParameter> pm = new()
+            {
+                StoredProcedures.Purchase.GetTransType(transType)
+            };
+
+            using (SqlConnection con = new SqlConnection(_constr))
+            {
+                con.Open();
+                DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Purchase.Search, pm.ToArray());
+                con.Close();
+
+                if (ds.Tables.Count > 0)
+                {
+                    foreach (DataRow r in ds.Tables[0].Rows)
+                        purchases.Add(ExtractRow(r));
+                }
+            }
+
+            return purchases;
         }
     }
 }

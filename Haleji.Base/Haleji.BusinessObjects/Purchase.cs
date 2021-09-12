@@ -54,6 +54,8 @@ namespace Haleji.BusinessObjects
         [Required]
         public string TagNo { get; set; }
 
+        public long? CurrentTransType { get; set; }
+
         public long Key
         {
             get { return this.PurchaseId; }

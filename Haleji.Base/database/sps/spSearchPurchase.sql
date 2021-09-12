@@ -22,7 +22,8 @@ CREATE PROCEDURE dbo.spSearchPurchase
 	 @PONumber nvarchar(50) = NULL,
 	 @InvoiceNumber nvarchar(50) = NULL,
 	 @Description nvarchar(500) = NULL,
-	 @TagNo nvarchar(50) = NULL
+	 @TagNo nvarchar(50) = NULL,
+	 @TransTypeId bigint = NULL
 AS
 	SELECT	P.*, I.ItemName, V.VendorName
 	FROM	Purchase P Inner Join Item I ON P.ItemId = I.ItemId
@@ -37,5 +38,6 @@ AS
 		AND (@InvoiceNumber IS NULL OR @InvoiceNumber Like '%'+@InvoiceNumber +'%')
 		AND (@Description IS NULL OR P.Description LIKE '%'+@Description+'%')
 		AND (@TagNo IS NULL OR P.TagNo LIKE '%'+@TagNo+'%')
+		AND (@TransTypeId IS NULL OR P.CurrentTransType = @TransTypeId)
 GO
 

@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<p>
+    <a asp-action="Create" class="btn @((ViewBag.TransferType=="New")?"btn-secondary":"btn-outline-secondary") btn-lg">
+        New Transfer
+    </a>
+
+    <a asp-action="Issued" class="btn @((ViewBag.TransferType=="Issued")?"btn-secondary":"btn-outline-secondary") btn-lg">
+        Issued
+    </a>
+
+    <a asp-action="Received" class="btn @((ViewBag.TransferType=="Received")?"btn-secondary":"btn-outline-secondary") btn-lg">
+        Received
+    </a>
+
+    <a asp-action="Discarded" class="btn @((ViewBag.TransferType=="Discarded")?"btn-secondary":"btn-outline-secondary") btn-lg">
+        Discarded
+    </a>
+
+    <a asp-action="Scrapped" class="btn @((ViewBag.TransferType=="Scrapped")?"btn-secondary":"btn-outline-secondary") btn-lg">
+        Scrapped
+    </a>
+
+</p>

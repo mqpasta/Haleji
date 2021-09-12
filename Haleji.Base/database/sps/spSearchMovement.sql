@@ -24,7 +24,7 @@ CREATE PROCEDURE dbo.spSearchMovement
 AS
 	;with cteItems(PurchaseId, ItemName) 
 	AS (
-		SElECT P.PurchaseId, I.ItemName
+		SElECT P.PurchaseId, I.ItemName + '(' + P.TagNo + ')' AS ItemName
 		FROM Item I Inner Join Purchase P ON I.ItemId = P.ItemId
 	)
 	SELECT	M.*, I.ItemName, L.LocationName, P.Name
