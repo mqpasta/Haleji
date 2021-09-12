@@ -10,31 +10,42 @@ namespace Haleji.BusinessObjects
         [Key]
         public long MovementId { get; set; }
 
-        [DisplayName("Transaction Type")]
+        [DisplayName("Status")]
         [Required]
-        public TransType TransactionType { get; set; }
+        public long TransactionTypeId { get; set; }
 
         [DisplayName("Person")]
-        public Person Person { get; set; }
+        public long? PersonId { get; set; }
+        public string? PersonName { get; set; }
 
         [DisplayName("Location")]
-        public Location Location { get; set; }
+        public long? LocationId { get; set; }
+
+        public string LocationName { get; set; }
 
         [DisplayName("Purchase Order")]
-        public Purchase Purchase { get; set; }
+        public long? PurchaseId { get; set; }
 
-        [DisplayName("Movement Date")]
+        [DisplayName("Item")]
+        public string? ItemName { get; set; }
+
+        [DisplayName("Date")]
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime MovDate { get; set; }
 
-        [DisplayName("Active")]
+        [DisplayName("Status")]
         [Required]
         public bool IsActive { get; set; }
-        public Movement ParentMovement { get; set; }
+
+        [DisplayName("Details")]
+        public long? ParentMovementId { get; set; }
 
         public long Key
         {
             get { return this.MovementId; }
+            set { }
         }
 
         public void Update(IEntity entity)

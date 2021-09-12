@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Haleji.BusinessObjects.Department>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h1>Departments</h1>
+
+<div id="ModalPlaceHolder"></div>
+
+<p>
+    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+            data-target="#createDepartment" data-url="@Url.Action("Create", "Department")">
+        Create
+    </button>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#editItem" data-url="@Url.Action("Edit", "Department", new { id = item.DepartmentId })">
+                        Edit
+                    </button> |
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                            data-target="#deleteItem" data-url="@Url.Action("Delete", "Department",new { id = item.DepartmentId})">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

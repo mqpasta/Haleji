@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Haleji.BusinessObjects.Person>
+
+@{
+    ViewData["Title"] = "Persons";
+}
+
+<h1>Persons</h1>
+
+<p>
+    <button type="button" class="btn btn-link" data-toggle="ajax-modal" data-target="#createPerson"
+            data-url="@Url.Action("Create","Person")">
+        Create
+    </button>
+</p>
+
+<div id="ModalPlaceHolder"></div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+
+                </td>
+                <td>
+                    @*@Html.DropDownListFor(modelItem => item.DepartmentId, ViewBag.DepartmentList as SelectList)*@
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                    @{
+                        var ext = item.Ext;
+                        if (ext != null)
+                        {
+                            <span>(Ext: @item.Ext)</span>
+                        }
+
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal" data-target="#createPerson"
+                            data-url="@Url.Action("Edit","Person", new { id = item.PersonId })">
+                        Edit
+                    </button> |
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal" data-target="#createPerson"
+                            data-url="@Url.Action("Delete","Person", new { id = item.PersonId })">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

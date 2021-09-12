@@ -22,18 +22,70 @@ namespace Haleji.SqlRepository
             }
         }
 
-        public IDepartmentRepository DepartmentRepository => throw new NotImplementedException();
+        public IDepartmentRepository DepartmentRepository
+        {
+            get
+            {
+                if (_departmentRepository == null)
+                    _departmentRepository = new SqlDepartmentRepository();
 
-        public IItemRepository ItemRepository => throw new NotImplementedException();
+                return _departmentRepository;
+            }
+        }
 
-        public IMovementRepository MovementRepository => throw new NotImplementedException();
+        public IItemRepository ItemRepository {
+            get {
+                if (_itemRepository == null)
+                    _itemRepository = new SqlItemRepository();
 
-        public IPersonRepository PersonRepository => throw new NotImplementedException();
+                return _itemRepository;
+            }
+        }
 
-        public IPurchaseRepository PurchaseRepository => throw new NotImplementedException();
+        public IMovementRepository MovementRepository
+        {
+            get
+            {
+                if (_movementRepository == null)
+                    _movementRepository = new SqlMovementRepository();
+
+                return _movementRepository;
+            }
+        }
+
+        public IPersonRepository PersonRepository
+        {
+            get
+            {
+                if (_personRepository == null)
+                    _personRepository = new SqlPersonRepository();
+
+                return _personRepository;
+            }
+        }
+
+        public IPurchaseRepository PurchaseRepository
+        {
+            get
+            {
+                if (_purchaseRepository == null)
+                    _purchaseRepository = new SqlPurchaseRepository();
+
+                return _purchaseRepository;
+            }
+        }
 
         public IStockRepository StockRepository => throw new NotImplementedException();
 
-        public IVendorRepository VendorRepository => throw new NotImplementedException();
+        public IVendorRepository VendorRepository
+        {
+            get
+            {
+                if (_vendorRepository == null)
+                    _vendorRepository = new SqlVendorRepository();
+
+                return _vendorRepository;
+            }
+        }
     }
 }

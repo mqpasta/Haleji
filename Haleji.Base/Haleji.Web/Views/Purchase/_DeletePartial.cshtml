@@ -1,0 +1,86 @@
+﻿@model Haleji.BusinessObjects.Purchase
+    <!-- Modal -->
+<div class="modal fade" id="deletePurchase" tabindex="-1" role="dialog" aria-labelledby="deletePurchaseTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form asp-action="Delete">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletePurchaseTitle">Delete Purchase</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal Body -->
+                    <div>
+                        <dl class="row">
+                            <input asp-for="PurchaseId" type="hidden" />
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.ItemName)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.ItemName) (@Html.DisplayFor(model => model.TagNo))
+                            </dd>
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.VendorName)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.VendorName)
+                            </dd>
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.PurchaseDate)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.PurchaseDate)
+                            </dd>
+                            @if (Model.StartDate != null || Model.EndDate != null)
+                            {
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.StartDate)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.StartDate) -  @Html.DisplayFor(model => model.EndDate)
+                                </dd>
+                            }
+                            @if (Model.PONumber != null)
+                            {
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.PONumber)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.PONumber)
+                                </dd>
+                            }
+                            @if (Model.InvoiceNumber != null)
+                            {
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.InvoiceNumber)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.InvoiceNumber)
+                                </dd>
+                            }
+                            @if (Model.Description != null)
+                            {
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Description)
+                                </dd>
+                            }
+                        </dl>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger" data-save="modal">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

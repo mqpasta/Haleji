@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Haleji.BusinessObjects.Movement>
+
+@{
+    ViewData["Title"] = "Issued";
+}
+
+<h1>Issued Items</h1>
+
+<div id="ModalPlaceHolder"></div>
+
+<partial name="_TransferHeader" />
+
+<p>
+    <a asp-action="Create">Issue an Item</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionTypeId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PersonName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationName)
+                </td>               
+                <td>
+                    @Enum.GetName(typeof(TransactionType), item.TransactionTypeId)
+                    @*@Html.DisplayFor(modelItem => item.TransactionTypeId)*@
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link btn-sm" data-toggle="ajax-modal"
+                            data-target="#editTransferItem" data-url="@Url.Action("Edit", "Transfer",new { id = item.Key})">
+                        Edit
+                    </button> |
+                        <button type="button" class="btn btn-link btn-sm" data-toggle="ajax-modal"
+                                data-target="#deleteTransferItem" data-url="@Url.Action("GetReceive", "Transfer",new { id = item.Key})">
+                            Receive
+                        </button> |
+                    <button type="button" class="btn btn-link btn-sm" data-toggle="ajax-modal"
+                            data-target="#deleteTransferItem" data-url="@Url.Action("Delete", "Transfer",new { id = item.Key})">
+                        Delete
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

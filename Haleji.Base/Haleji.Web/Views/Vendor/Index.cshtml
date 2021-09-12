@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Haleji.BusinessObjects.Vendor>
+
+@{
+    ViewData["Title"] = "Vendors";
+}
+
+<h1>Vendors</h1>
+
+<p>
+    <button type="button" class="btn btn-link" data-toggle="ajax-modal" data-target="#createVendor"
+            data-url="@Url.Action("Create","Vendor")">
+        Create
+    </button>
+</p>
+
+<div id="ModalPlaceHolder"></div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VendorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactPerson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VendorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactPerson)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                <td>
+                    @{
+                        
+                        if (item.Note != null && item.Note.Length > 50)
+                        {
+                            @item.Note.Substring(0, 47) <a href="#" title="@item.Note">...</a>
+                        }
+                        else
+                        {
+                            <span>@item.Note</span>
+                        }
+                    }
+                    @*@Html.DisplayFor(modelItem => item.Note)*@
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal" data-target="#editVendor"
+                            data-url="@Url.Action("Edit","Vendor", new {id = item.VendorId })">
+                        Edit
+                    </button> |
+                    <button type="button" class="btn btn-link" data-toggle="ajax-modal" data-target="#deleteVendor"
+                            data-url="@Url.Action("Delete","Vendor", new { id = item.VendorId })">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

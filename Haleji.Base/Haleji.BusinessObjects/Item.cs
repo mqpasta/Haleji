@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace Haleji.BusinessObjects
 {
     public class Item : IEntity
@@ -14,10 +13,12 @@ namespace Haleji.BusinessObjects
         [MaxLength(50, ErrorMessage ="Maximum limit is 50 characters.")]
         [Required]
         public string ItemName { get; set; }
-        
+
+#nullable enable
         [DisplayName("Item Description")]
         [MaxLength(1000, ErrorMessage ="Maximum limit is 1000 characters.")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
+#nullable disable
 
         public long Key
         {
