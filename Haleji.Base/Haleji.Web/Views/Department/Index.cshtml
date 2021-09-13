@@ -15,7 +15,7 @@
     </button>
 </p>
 
-<table class="table">
+<table class="table" id="deptList">
     <thead>
         <tr>
             <th>
@@ -46,3 +46,10 @@
         }
     </tbody>
 </table>
+
+
+<script>
+    $(document).ready(function () {
+        $('#deptList').DataTable();
+    });
+</script>

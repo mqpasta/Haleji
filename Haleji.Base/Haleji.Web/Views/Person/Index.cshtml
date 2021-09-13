@@ -15,7 +15,7 @@
 
 <div id="ModalPlaceHolder"></div>
 
-<table class="table">
+<table class="table" id="personList">
     <thead>
         <tr>
             <th>
@@ -76,6 +76,6 @@
 
 <script>
     $(document).ready(function () {
-        $('.search-list').select2();
+        $('#personList').DataTable();
     });
 </script>

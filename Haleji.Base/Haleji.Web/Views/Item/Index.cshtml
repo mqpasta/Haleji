@@ -14,7 +14,7 @@
         Create
     </button>
 </p>
-<table class="table">
+<table class="table" id="itemList">
     <thead>
         <tr>
             <th>
@@ -57,3 +57,10 @@
         }
     </tbody>
 </table>
+
+
+<script>
+    $(document).ready(function () {
+        $('#itemList').DataTable();
+    });
+</script>
