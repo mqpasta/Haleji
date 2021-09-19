@@ -1,0 +1,28 @@
+version: '3.4'
+
+networks:
+  uit-inventory:
+
+services:
+  haleji.web:
+    image: haleji.web
+    build:
+      context: .
+      dockerfile: Haleji.Web/Dockerfile
+    networks:
+    - uit-inventory
+    depends_on:
+    - db
+
+  db:
+    image: haleji.database
+    build:
+        context: .
+        dockerfile: database/Dockerfile.database
+    networks:
+     - uit-inventory
+    volumes:
+    - mssqldata:/var/opt/mssql
+
+volumes:
+  mssqldata:
