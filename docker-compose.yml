@@ -4,8 +4,8 @@ networks:
   uit-inventory:
 
 services:
-  haleji.web:
-    image: haleji.web
+  web:
+    image: haleji-web
     build:
       context: .
       dockerfile: Haleji.Base/Haleji.Web/Dockerfile
@@ -15,7 +15,7 @@ services:
     - db
 
   db:
-    image: haleji.database
+    image: haleji-database
     build:
         context: .
         dockerfile: Haleji.Base/database/Dockerfile.database
