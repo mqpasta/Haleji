@@ -16,7 +16,7 @@ CREATE PROCEDURE dbo.spMovementLedger
 	@TransTypeId bigint = NULL,
 	@PersonId bigint = NULL,
 	@LocationId bigint = NULL,
-	@DepratmentId bigint = NULL,
+	@DepartmentId bigint = NULL,
 	@PurchaseId bigint = NULL,
 	@ItemId bigint = NULL,
 	@StartDate date = NULL,
@@ -40,7 +40,7 @@ AS
 		AND (@LocationId IS NULL OR M.LocationId = @LocationId)
 		AND (@PurchaseId IS NULL OR M.PurchaseId = @PurchaseId)
 		AND (@ItemId IS NULL OR I.ItemId = @ItemId)
-		AND (@DepratmentId IS NULL OR D.DepartmentId = @DepratmentId)
+		AND (@DepartmentId IS NULL OR D.DepartmentId = @DepartmentId)
 		AND (@StartDate IS NULL OR MovDate >= @StartDate)
 		AND (@EndDate IS NULL OR MovDate <= @EndDate)
 	ORDER BY m.MovDate 

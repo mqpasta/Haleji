@@ -28,7 +28,7 @@ namespace Haleji.Web.Controllers
         {
             var p = ViewHelper.PersonList(_factory, r.PersonId);
             var l = ViewHelper.LocationList(_factory, r.LocationId);
-            
+
             ViewBag.PersonList = p;
             ViewBag.LocationList = l;
 
@@ -41,7 +41,7 @@ namespace Haleji.Web.Controllers
             m.IsActive = true;
 
             r.Result = _factory.MovementRepository.SearchMovement(m, r.StartDate, r.EndDate);
-            
+
             return View(r);
         }
 
@@ -53,6 +53,33 @@ namespace Haleji.Web.Controllers
             s.Result = _factory.ItemRepository.GetStockSummary();
 
             return View(s);
+        }
+
+        public IActionResult Ledger(ReportLedger report)
+        {
+
+            ViewBag.PersonList = ViewHelper.PersonList(_factory, report.PersonId);
+            ViewBag.LocationList = ViewHelper.LocationList(_factory, report.LocationId);
+            ViewBag.DepartmentList = ViewHelper.DepartmentList(_factory, report.DepartmentId);
+            ViewBag.ItemList = ViewHelper.ItemList(_factory, report.ItemId);
+
+            if (report != null)
+            {
+                if (report.PersonId == -1)
+                    report.PersonId = null;
+
+                if (report.LocationId == -1)
+                    report.LocationId = null;
+
+                if (report.TransTypeId == -1)
+                    report.TransTypeId = null;
+
+                report.Result = _factory.MovementRepository.SearchLedger(report.StartDate,
+                    report.EndDate, report.PersonId, report.DepartmentId, report.ItemId, report.LocationId,
+                    report.TransTypeId, null);
+            }
+
+            return View(report);
         }
     }
 }

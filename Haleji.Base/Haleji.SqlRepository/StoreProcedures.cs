@@ -27,6 +27,7 @@ namespace Haleji.SqlRepository
             public const string Delete = "spDeleteMovement";
             public const string GetAll = "spGetAllMovement";
             public const string Search = "spSearchMovement";
+            public const string Ledger = "spMovementLedger";
 
             public static SqlParameter GetMovementId(object v)
             {

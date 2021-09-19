@@ -12,7 +12,7 @@ namespace Haleji.Web.Models
     /// <summary>
     /// Model for Report to view Issued Items
     /// </summary>
-    public class ReportIssued
+    public class ReportLedger
     {
         [DisplayName("From")]
         [DataType(DataType.Date)]
@@ -26,10 +26,50 @@ namespace Haleji.Web.Models
         public long? PersonId { get; set; }
         [DisplayName("Location")]
         public long? LocationId { get; set; }
-        
+
+        [DisplayName("Department")]
+        public long? DepartmentId { get; set; }
+
+        [DisplayName("Item")]
+        public long? ItemId { get; set; }
+
+        [DisplayName("Transaction Type")]
+        public long? TransTypeId { get; set; }
+
         /// <summary>
         /// Store result data
         /// </summary>
-        public List<Movement> Result { get; set; } 
+        public DataTable Result { get; set; }
+
+        public string GetMovDate(object o)
+        {
+            return Convert.ToDateTime((o as DataRow)["MovDate"]).ToShortDateString();
+        }
+
+        public string GetTransType(object o)
+        {
+            return Enum.GetName(typeof(TransactionType), Convert.ToInt64((o as DataRow)["TransTypeId"]));
+        }
+
+        public string GetItemName(object o)
+        {
+            return Convert.ToString((o as DataRow)["ItemName"]) + 
+                "(" + Convert.ToString((o as DataRow)["TagNo"]) + ")";
+        }
+
+        public string GetName(object o)
+        {
+            return Convert.ToString((o as DataRow)["Name"]);
+        }
+
+        public string GetDepartment(object o)
+        {
+            return Convert.ToString((o as DataRow)["DepartmentName"]);
+        }
+
+        public string GetLocation(object o)
+        {
+            return Convert.ToString((o as DataRow)["LocationName"]);
+        }
     }
 }

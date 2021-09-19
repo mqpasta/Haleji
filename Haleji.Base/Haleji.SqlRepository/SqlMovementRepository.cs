@@ -221,5 +221,38 @@ namespace Haleji.SqlRepository
             return movements;
         }
 
+        public DataTable SearchLedger(DateTime? startDate, DateTime? endDate, 
+                                    long? personId, long? departmentId, long? itemId, long? locationId,
+                                    long? transTypeId, long? purchaseId)
+        {
+            DataTable dt = new DataTable();
+            List<SqlParameter> pm = new()
+            {
+                StoredProcedures.Movement.GetStartDate(startDate),
+                StoredProcedures.Movement.GetEndDate(endDate),
+                StoredProcedures.Movement.GetPersonId(personId),
+                StoredProcedures.Movement.GetLocationId(locationId),
+                StoredProcedures.Movement.GetTransType(transTypeId),
+                StoredProcedures.Movement.GetPurchaseId(purchaseId),
+                StoredProcedures.Department.GetDeptId(departmentId),
+                StoredProcedures.Item.GetItemId(itemId)
+            };
+
+            using(SqlConnection con = new SqlConnection(_constr))
+            {
+                con.Open();
+                DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Movement.Ledger, pm.ToArray());
+                con.Close();
+
+                if(ds.Tables.Count>0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+
+            return dt;
+        }
+
+        
     }
 }

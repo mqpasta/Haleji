@@ -1,0 +1,186 @@
+﻿@model Haleji.Web.Models.ReportLedger
+
+@{
+    ViewData["Title"] = "Ledger Report";
+}
+
+<h1>Ledger Report</h1>
+<hr />
+
+<div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+    <!-- Accordion card -->
+    <div class="card">
+
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="reportFilter">
+            <a data-toggle="collapse" data-parent="#accordionEx" href="#reportFiterForm" aria-expanded="true"
+               aria-controls="reportFiterForm">
+                <h5 class="mb-0">
+                    Report Criteria <i class="fas fa-angle-down rotate-icon"></i>
+                </h5>
+            </a>
+        </div>
+        <div id="reportFiterForm" class="collapse show" role="tabpanel" aria-labelledby="reportFiterForm"
+             data-parent="#accordionEx">
+            <div class="card-body">
+
+                <form asp-action="Ledger">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="StartDate" class="control-label"></label>
+                                <input asp-for="StartDate" class="form-control" />
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="EndDate" class="control-label"></label>
+                                <input asp-for="EndDate" class="form-control" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="TransTypeId" class="control-label"></label>
+                                @*<input asp-for="LocationId" class="form-control" />*@
+                                <select asp-for="TransTypeId" asp-items="@Html.GetEnumSelectList(typeof(TransactionType))" class="form-control search-list">
+                                    <option value="-1">All Transactions</option>
+                                </select>
+                                <span asp-validation-for="TransTypeId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="PersonId" class="control-label"></label>
+                                @*<input asp-for="PersonId" class="form-control" />*@
+                                <select asp-for="PersonId" asp-items="@ViewBag.PersonList" class="form-control search-list">
+                                    <option value="-1">All Persons</option>
+                                </select>
+                                <span asp-validation-for="PersonId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="LocationId" class="control-label"></label>
+                                @*<input asp-for="LocationId" class="form-control" />*@
+                                <select asp-for="LocationId" asp-items="@ViewBag.LocationList" class="form-control search-list">
+                                    <option value="-1">All Locations</option>
+                                </select>
+                                <span asp-validation-for="LocationId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="ItemId" class="control-label"></label>
+                                @*<input asp-for="LocationId" class="form-control" />*@
+                                <select asp-for="ItemId" asp-items="@ViewBag.ItemList" class="form-control search-list">
+                                    <option value="-1">All Items</option>
+                                </select>
+                                <span asp-validation-for="ItemId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="submit" value="Generate" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" role="tab" id="reportResult">
+            <a data-toggle="collapse" data-parent="#accordionEx" href="#resultData" aria-expanded="true"
+               aria-controls="resultData">
+                <h5 class="mb-0">
+                    Result <i class="fas fa-angle-down rotate-icon"></i>
+                </h5>
+            </a>
+        </div>
+        <div id="resultData" class="collapse show" role="tabpanel" aria-labelledby="resultData"
+             data-parent="#accordionEx">
+            <div class="card-body">
+                @if (Model.Result != null && Model.Result.Rows.Count > 0)
+                {
+                    <table class="table" id="issuedList">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    Item
+                                </th>
+                                <th>
+                                    Person
+                                </th>
+                                <th>
+                                    Location
+                                </th>
+                                <th>
+                                    Transaction Type
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Result.Rows)
+                            {
+                                <tr>
+                                    <td>
+                                        @Model.GetMovDate(item)
+                                    </td>
+                                    <td>
+                                        @Model.GetItemName(item)
+                                    </td>
+                                    <td>
+                                        @Model.GetName(item)
+                                    </td>
+                                    <td>
+                                        @Model.GetLocation(item)
+                                    </td>
+                                    <td>
+                                        @Model.GetTransType(item)
+                                        @*@Html.DisplayFor(modelItem => item.TransactionTypeId)*@
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div>No result found.</div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $('.search-list').select2({
+                width: '100%'
+            });
+            $('#issuedList').DataTable();
+        });
+    </script>
+}
+
