@@ -3,16 +3,61 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>e26b67b6-c457-4228-845b-2da5ffa14818</ProjectGuid>
+    <ProjectGuid>55999b97-4663-41b7-bc51-b8fb0ccdb490</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>haleji.web</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="docker-compose.override.yml">
-      <DependentUpon>docker-compose.yml</DependentUpon>
-    </None>
+    <None Include="database\combine_sps.bat" />
+    <None Include="database\combine_sps.sql" />
+    <None Include="database\DBCreation.sql" />
+    <None Include="database\Dockerfile.database" />
+    <None Include="database\entrypoint.sh" />
+    <None Include="database\InsertTransType.sql" />
+    <None Include="database\obj\Docker\CanonicalServiceNames.cache" />
+    <None Include="database\run-script.sh" />
+    <None Include="database\sps\spDeleteDepartment.sql" />
+    <None Include="database\sps\spDeleteItem.sql" />
+    <None Include="database\sps\spDeleteLocation.sql" />
+    <None Include="database\sps\spDeleteMovement.sql" />
+    <None Include="database\sps\spDeletePerson.sql" />
+    <None Include="database\sps\spDeletePurchase.sql" />
+    <None Include="database\sps\spDeleteVendor.sql" />
+    <None Include="database\sps\spEditPerson.sql" />
+    <None Include="database\sps\spGetAllDepartment.sql" />
+    <None Include="database\sps\spGetAllItem.sql" />
+    <None Include="database\sps\spGetAllLocation.sql" />
+    <None Include="database\sps\spGetAllPerson.sql" />
+    <None Include="database\sps\spGetAllPurchase.sql" />
+    <None Include="database\sps\spGetAllVendor.sql" />
+    <None Include="database\sps\spGetStockSummary.sql" />
+    <None Include="database\sps\spInsertDepartment.sql" />
+    <None Include="database\sps\spInsertItem.sql" />
+    <None Include="database\sps\spInsertLocation.sql" />
+    <None Include="database\sps\spInsertMovement.sql" />
+    <None Include="database\sps\spInsertPerson.sql" />
+    <None Include="database\sps\spInsertPurchase.sql" />
+    <None Include="database\sps\spInsertVendor.sql" />
+    <None Include="database\sps\spMovementLedger.sql" />
+    <None Include="database\sps\spSearchDepartment.sql" />
+    <None Include="database\sps\spSearchItem.sql" />
+    <None Include="database\sps\spSearchLocation.sql" />
+    <None Include="database\sps\spSearchMovement.sql" />
+    <None Include="database\sps\spSearchPerson.sql" />
+    <None Include="database\sps\spSearchPurchase.sql" />
+    <None Include="database\sps\spSearchVendor.sql" />
+    <None Include="database\sps\spUpdateDepartment.sql" />
+    <None Include="database\sps\spUpdateItem.sql" />
+    <None Include="database\sps\spUpdateLocation.sql" />
+    <None Include="database\sps\spUpdateMovement.sql" />
+    <None Include="database\sps\spUpdatePerson.sql" />
+    <None Include="database\sps\spUpdatePurchase.sql" />
+    <None Include="database\sps\spUpdateVendor.sql" />
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="database\obj\**" />
   </ItemGroup>
 </Project>

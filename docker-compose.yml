@@ -1,28 +1,34 @@
 version: '3.4'
-
 networks:
   uit-inventory:
 
 services:
-  web:
-    image: haleji-web
+  haleji.web:
+    image: haleji.web
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=https://+:443;http://+:80
     build:
       context: .
-      dockerfile: Haleji.Base/Haleji.Web/Dockerfile
+      dockerfile: Haleji.Web/Dockerfile
+    ports:
+    - "80"
+    - "443"
     networks:
     - uit-inventory
     depends_on:
     - db
-
+  
   db:
     image: haleji-database
     build:
-        context: .
-        dockerfile: Haleji.Base/database/Dockerfile.database
+      context: .
+      dockerfile: database/Dockerfile.database
     networks:
-     - uit-inventory
+    - uit-inventory
     volumes:
     - mssqldata:/var/opt/mssql
 
 volumes:
   mssqldata:
+
