@@ -7,13 +7,13 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Haleji.Web/Haleji.Web.csproj", "Haleji.Web/"]
-COPY ["Haleji.BusinessObjects/Haleji.BusinessObjects.csproj", "Haleji.BusinessObjects/"]
-COPY ["Haleji.RepositoryBase/Haleji.RepositoryBase.csproj", "Haleji.RepositoryBase/"]
-COPY ["Haleji.BusinessLogic/Haleji.BusinessLogic.csproj", "Haleji.BusinessLogic/"]
-COPY ["Haleji.FakeRepository/Haleji.FakeRepository.csproj", "Haleji.FakeRepository/"]
-COPY ["Haleji.SqlRepository/Haleji.SqlRepository.csproj", "Haleji.SqlRepository/"]
-COPY ["qaimpasta.Common.DAL/Irada.Common.DAL.csproj", "qaimpasta.Common.DAL/"]
+COPY ["Haleji.Base/Haleji.Web/Haleji.Web.csproj", "Haleji.Web/"]
+COPY ["Haleji.Base/Haleji.BusinessObjects/Haleji.BusinessObjects.csproj", "Haleji.BusinessObjects/"]
+COPY ["Haleji.Base/Haleji.RepositoryBase/Haleji.RepositoryBase.csproj", "Haleji.RepositoryBase/"]
+COPY ["Haleji.Base/Haleji.BusinessLogic/Haleji.BusinessLogic.csproj", "Haleji.BusinessLogic/"]
+COPY ["Haleji.Base/Haleji.FakeRepository/Haleji.FakeRepository.csproj", "Haleji.FakeRepository/"]
+COPY ["Haleji.Base/Haleji.SqlRepository/Haleji.SqlRepository.csproj", "Haleji.SqlRepository/"]
+COPY ["Haleji.Base/qaimpasta.Common.DAL/Irada.Common.DAL.csproj", "qaimpasta.Common.DAL/"]
 RUN dotnet restore "Haleji.Web/Haleji.Web.csproj"
 COPY . .
 WORKDIR "/src/Haleji.Web"

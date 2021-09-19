@@ -1,10 +1,11 @@
 version: '3.4'
+
 networks:
   uit-inventory:
 
 services:
   haleji-web:
-    image: haleji.web
+    image: haleji-web
     environment:
     - ASPNETCORE_ENVIRONMENT=Development
     - ASPNETCORE_URLS=https://+:443;http://+:80
