@@ -8,7 +8,7 @@ services:
     image: haleji.web
     build:
       context: .
-      dockerfile: Haleji.Web/Dockerfile
+      dockerfile: Haleji.Base/Haleji.Web/Dockerfile
     networks:
     - uit-inventory
     depends_on:
@@ -18,7 +18,7 @@ services:
     image: haleji.database
     build:
         context: .
-        dockerfile: database/Dockerfile.database
+        dockerfile: Haleji.Base/database/Dockerfile.database
     networks:
      - uit-inventory
     volumes:
