@@ -22,9 +22,7 @@ namespace Haleji.Web.Controllers
         // GET: PurchaseController
         public ActionResult Index()
         {
-            return View(_factory.PurchaseRepository.GetByTransactionType(
-                Convert.ToInt32(TransactionType.Issued)
-                ));
+            return View(_factory.PurchaseRepository.GetAll());
         }
 
         // GET: PurchaseController/Create

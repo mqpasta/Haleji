@@ -1,0 +1,60 @@
+﻿@model Haleji.Web.Models.ReportStockSummary
+
+@{
+    ViewData["Title"] = "Stock Summary";
+}
+
+<h1>Stock Summary</h1>
+
+<table class="table" id="stockSummary">
+    <thead>
+        <tr>
+            <th>
+                Item
+            </th>
+            <th>
+                Available
+            </th>
+            <th>
+                Issued
+            </th>
+            <th>
+                Discarded
+            </th>
+            <th>Scrapped</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Result != null && Model.Result.Rows.Count > 0)
+            @foreach (var item in Model.Result.Rows)
+            {
+                <tr>
+                    <td>
+                        @Model.GetName(item)
+                    </td>
+                    <td>
+                        @Model.GetAvailable(item)
+                    </td>
+                    <td>
+                        @Model.GetIssued(item)
+                    </td>
+                    <td>
+                        @Model.GetOut(item)
+                    </td>
+                    <td>
+                        @Model.GetScrapped(item)
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr><td>No data found.</td></tr>
+            }
+    </tbody>
+</table>
+
+<script>
+        $(document).ready(function () {
+            $('#stockSummary').DataTable();
+        });
+</script>

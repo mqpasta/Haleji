@@ -32,7 +32,7 @@ namespace Haleji.BusinessObjects
         [DisplayName("Date")]
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime MovDate { get; set; }
 
         [DisplayName("Status")]

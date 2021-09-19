@@ -73,7 +73,7 @@ namespace Haleji.Web.Models
                 personList = new SelectList(persons,
                             "PersonId", "Name", "Select Person");
             }
-                
+
             else
                 personList = new SelectList(factory.PersonRepository.GetAll(),
                             "PersonId", "Name", personId.Value);
@@ -81,7 +81,7 @@ namespace Haleji.Web.Models
             return personList;
         }
 
-        public static SelectList LocationList(IRepositoryFactory factory,long? locationId = null)
+        public static SelectList LocationList(IRepositoryFactory factory, long? locationId = null)
         {
             SelectList locationList;
 

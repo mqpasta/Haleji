@@ -27,6 +27,7 @@ namespace Haleji.SqlRepository
             public const string Delete = "spDeleteMovement";
             public const string GetAll = "spGetAllMovement";
             public const string Search = "spSearchMovement";
+            public const string Ledger = "spMovementLedger";
 
             public static SqlParameter GetMovementId(object v)
             {
@@ -52,9 +53,20 @@ namespace Haleji.SqlRepository
             {
                 return SQLHelper.CreateSqlParam("@PurchaseId", v);
             }
+
             public static SqlParameter GetMovDate(object v)
             {
                 return SQLHelper.CreateSqlParam("@MovDate", v);
+            }
+
+            public static SqlParameter GetStartDate(object v)
+            {
+                return SQLHelper.CreateSqlParam("@StartDate", v);
+            }
+
+            public static SqlParameter GetEndDate(object v)
+            {
+                return SQLHelper.CreateSqlParam("@EndDate", v);
             }
 
             public static SqlParameter GetIsActive(object v)
@@ -199,6 +211,7 @@ namespace Haleji.SqlRepository
             public const string Delete = "spDeleteItem";
             public const string GetAll = "spGetAllItem";
             public const string Search = "spSearchItem";
+            public const string Summary = "spGetStockSummary";
 
             private const string ItemId = "@ItemId";
             private const string ItemName = "@ItemName";

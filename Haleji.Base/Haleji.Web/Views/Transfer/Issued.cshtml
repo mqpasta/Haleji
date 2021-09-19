@@ -15,7 +15,7 @@
 </p>
 
 
-<table class="table">
+<table class="table" id="issuedList">
     <thead>
         <tr>
             <th>
@@ -51,7 +51,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LocationName)
-                </td>               
+                </td>
                 <td>
                     @Enum.GetName(typeof(TransactionType), item.TransactionTypeId)
                     @*@Html.DisplayFor(modelItem => item.TransactionTypeId)*@
@@ -61,10 +61,10 @@
                             data-target="#editTransferItem" data-url="@Url.Action("Edit", "Transfer",new { id = item.Key})">
                         Edit
                     </button> |
-                        <button type="button" class="btn btn-link btn-sm" data-toggle="ajax-modal"
-                                data-target="#deleteTransferItem" data-url="@Url.Action("GetReceive", "Transfer",new { id = item.Key})">
-                            Receive
-                        </button> |
+                    <button type="button" class="btn btn-link btn-sm" data-toggle="ajax-modal"
+                            data-target="#deleteTransferItem" data-url="@Url.Action("GetReceive", "Transfer",new { id = item.Key})">
+                        Receive
+                    </button> |
                     <button type="button" class="btn btn-link btn-sm" data-toggle="ajax-modal"
                             data-target="#deleteTransferItem" data-url="@Url.Action("Delete", "Transfer",new { id = item.Key})">
                         Delete
@@ -75,3 +75,10 @@
         }
     </tbody>
 </table>
+
+
+<script>
+    $(document).ready(function () {
+        $('#issuedList').DataTable();
+    });
+</script>

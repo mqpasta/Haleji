@@ -11,7 +11,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="purchaseList">
     <thead>
         <tr>
             <th>
@@ -32,9 +32,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.StartDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>*@
             <th></th>
         </tr>
     </thead>
@@ -63,12 +63,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>*@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Key }) |
-                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
                     <button type="button" class="btn btn-link" data-toggle="ajax-modal"
                             data-target="#deletePurchase" data-url="@Url.Action("Delete", "Purchase", new { id = item.Key})">
                         Delete
@@ -78,3 +77,10 @@
         }
     </tbody>
 </table>
+
+
+<script>
+    $(document).ready(function () {
+        $('#purchaseList').DataTable();
+    });
+</script>
