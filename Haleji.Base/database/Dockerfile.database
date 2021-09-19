@@ -3,7 +3,7 @@ ENV SA_PASSWORD "King.1234"
 ENV ACCEPT_EULA Y
 ENV MSSQL_SA_PASSWORD King.1234
 
-copy ./TestCore/Data/ /
+copy ./Haleji.Base/database/ /
 
 USER root
 RUN chmod +x entrypoint.sh
