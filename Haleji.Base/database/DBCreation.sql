@@ -1,12 +1,8 @@
 USE [master]
 GO
-/****** Object:  Database [Haleji]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Database [Haleji]    Script Date: 19/09/2021 4:35:43 pm ******/
 CREATE DATABASE [Haleji]
  CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Haleji_Test', FILENAME = N'E:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\Haleji_Test.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'Haleji_Test_log', FILENAME = N'E:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\Haleji_Test_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
  WITH CATALOG_COLLATION = DATABASE_DEFAULT
 GO
 ALTER DATABASE [Haleji] SET COMPATIBILITY_LEVEL = 150
@@ -80,7 +76,7 @@ ALTER DATABASE [Haleji] SET QUERY_STORE = OFF
 GO
 USE [Haleji]
 GO
-/****** Object:  Table [dbo].[Department]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Table [dbo].[Department]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +90,7 @@ CREATE TABLE [dbo].[Department](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Item]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Table [dbo].[Item]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,7 +109,7 @@ CREATE TABLE [dbo].[Item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Location]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Table [dbo].[Location]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +127,7 @@ CREATE TABLE [dbo].[Location](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Movement]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Table [dbo].[Movement]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -151,7 +147,7 @@ CREATE TABLE [dbo].[Movement](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Person]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Table [dbo].[Person]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -169,7 +165,7 @@ CREATE TABLE [dbo].[Person](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Purchase]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Table [dbo].[Purchase]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -192,7 +188,7 @@ CREATE TABLE [dbo].[Purchase](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[StockStatus]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Table [dbo].[StockStatus]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -203,7 +199,7 @@ CREATE TABLE [dbo].[StockStatus](
 	[Count] [int] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TransType]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Table [dbo].[TransType]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -217,7 +213,7 @@ CREATE TABLE [dbo].[TransType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Vendor]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  Table [dbo].[Vendor]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -299,7 +295,7 @@ REFERENCES [dbo].[TransType] ([TransTypeId])
 GO
 ALTER TABLE [dbo].[StockStatus] CHECK CONSTRAINT [FK_StockStatus_TransType]
 GO
-/****** Object:  StoredProcedure [dbo].[spDeleteDepartment]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spDeleteDepartment]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -311,7 +307,7 @@ AS
 	DELETE FROM Department 
 	WHERE	DepartmentId = @DepartmentId
 GO
-/****** Object:  StoredProcedure [dbo].[spDeleteItem]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spDeleteItem]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -323,7 +319,7 @@ AS
 	DELETE FROM Item WHERE ItemId = @ItemId
 
 GO
-/****** Object:  StoredProcedure [dbo].[spDeleteLocation]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spDeleteLocation]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -334,7 +330,7 @@ CREATE PROCEDURE [dbo].[spDeleteLocation]
 AS
 	DELETE FROM Location WHERE LocationId = @LocationId
 GO
-/****** Object:  StoredProcedure [dbo].[spDeleteMovement]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spDeleteMovement]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -347,7 +343,7 @@ AS
 	 WHERE MovementId = @MovementId
 
 GO
-/****** Object:  StoredProcedure [dbo].[spDeletePerson]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spDeletePerson]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -358,7 +354,7 @@ CREATE PROCEDURE [dbo].[spDeletePerson]
 AS
 	DELETE FROM Person WHERE PersonId = @PersonId
 GO
-/****** Object:  StoredProcedure [dbo].[spDeletePurchase]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spDeletePurchase]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -381,7 +377,7 @@ AS
 	END
 	
 GO
-/****** Object:  StoredProcedure [dbo].[spDeleteVendor]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spDeleteVendor]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -392,7 +388,7 @@ CREATE PROCEDURE [dbo].[spDeleteVendor]
 AS
 	DELETE FROM Vendor WHERE VendorId = @VendorId
 GO
-/****** Object:  StoredProcedure [dbo].[spEditPerson]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spEditPerson]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -414,7 +410,7 @@ AS
 			IsActive = @IsActive
 	WHERE	PersonId = @PersonId
 GO
-/****** Object:  StoredProcedure [dbo].[spGetAllDepartment]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spGetAllDepartment]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -424,7 +420,7 @@ CREATE PROCEDURE [dbo].[spGetAllDepartment]
 AS
 	SELECT * FROM Department 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetAllItem]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spGetAllItem]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -435,7 +431,7 @@ AS
 	SELECT * FROM Item
 
 GO
-/****** Object:  StoredProcedure [dbo].[spGetAllLocation]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spGetAllLocation]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -445,7 +441,7 @@ CREATE PROCEDURE [dbo].[spGetAllLocation]
 AS
 	SELECT * FROM Location
 GO
-/****** Object:  StoredProcedure [dbo].[spGetAllPerson]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spGetAllPerson]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -456,7 +452,7 @@ AS
 	SELECT P.* , D.DepartmentName
 	FROM Person P LEFT JOIN Department D ON P.DepartmentId = D.DepartmentId
 GO
-/****** Object:  StoredProcedure [dbo].[spGetAllPurchase]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spGetAllPurchase]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -468,7 +464,7 @@ AS
 	FROM	Purchase P Inner Join Item I ON P.ItemId = I.ItemId
 			Inner Join Vendor V ON P.VendorId = V.VendorId
 GO
-/****** Object:  StoredProcedure [dbo].[spGetAllVendor]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spGetAllVendor]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -480,7 +476,58 @@ AS
 	FROM	Vendor
 
 GO
-/****** Object:  StoredProcedure [dbo].[spInsertDepartment]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spGetStockSummary]    Script Date: 19/09/2021 4:35:43 pm ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[spGetStockSummary]
+AS
+	
+
+;with cte_avilable AS (
+	SELECT I.ItemId, P.CurrentTransType, COUNT(1) AS [QTY] 
+	FROM Purchase P 
+			INNER JOIN Item I ON I.ItemId = P.ItemId
+			INNER JOIN TransType T ON T.TransTypeId = P.CurrentTransType
+	WHERE P.CurrentTransType = 1 
+	GROUP BY I.ItemId, P.CurrentTransType
+), cte_Issued AS (
+	SELECT I.ItemId, P.CurrentTransType, COUNT(1) AS [QTY] 
+	FROM Purchase P 
+			INNER JOIN Item I ON I.ItemId = P.ItemId
+			INNER JOIN TransType T ON T.TransTypeId = P.CurrentTransType
+	WHERE P.CurrentTransType = 2
+	GROUP BY I.ItemId, P.CurrentTransType
+), cte_scrap AS (
+	SELECT I.ItemId, P.CurrentTransType, COUNT(1) AS [QTY] 
+	FROM Purchase P 
+			INNER JOIN Item I ON I.ItemId = P.ItemId
+			INNER JOIN TransType T ON T.TransTypeId = P.CurrentTransType
+	WHERE P.CurrentTransType = 3
+	GROUP BY I.ItemId, P.CurrentTransType
+), cte_OutOfStock AS (
+	SELECT I.ItemId, P.CurrentTransType, COUNT(1) AS [QTY] 
+	FROM Purchase P 
+			INNER JOIN Item I ON I.ItemId = P.ItemId
+			INNER JOIN TransType T ON T.TransTypeId = P.CurrentTransType
+	WHERE P.CurrentTransType = 4
+	GROUP BY I.ItemId, P.CurrentTransType
+)
+select	Item.*,
+		ISNULL(A.QTY,0) as AvailableQty,
+		ISNULL(I.QTY,0) as IssuedQty,
+		ISNULL(O.QTY,0) as OutQty,
+		ISNULL(S.QTY,0) as ScrappedQty
+from	Item 
+			LEFT JOIN cte_avilable A ON A.ItemId = Item.ItemId
+			LEFT JOIN cte_Issued I ON I.ItemId = A.ItemId
+			LEFT JOIN cte_OutOfStock O ON O.ItemId = A.ItemId
+			LEFT JOIN cte_scrap S ON S.ItemId = A.ItemId
+
+GO
+/****** Object:  StoredProcedure [dbo].[spInsertDepartment]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -492,7 +539,7 @@ AS
 	Insert Into Department (DepartmentName) VALUES(@DepartmentName)
 	SELECT SCOPE_IDENTITY()
 GO
-/****** Object:  StoredProcedure [dbo].[spInsertItem]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spInsertItem]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -507,7 +554,7 @@ AS
 
 	SELECT SCOPE_IDENTITY()
 GO
-/****** Object:  StoredProcedure [dbo].[spInsertLocation]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spInsertLocation]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -519,7 +566,7 @@ AS
 	INSERT INTO Location (LocationName) VALUES(@LocationName)
 	SELECT SCOPE_IDENTITY()
 GO
-/****** Object:  StoredProcedure [dbo].[spInsertMovement]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spInsertMovement]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -541,7 +588,7 @@ AS
 				@MovDate, @IsActive, @ParentMovement)
 
 GO
-/****** Object:  StoredProcedure [dbo].[spInsertPerson]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spInsertPerson]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -559,7 +606,7 @@ AS
 
 	SELECT SCOPE_IDENTITY()
 GO
-/****** Object:  StoredProcedure [dbo].[spInsertPurchase]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spInsertPurchase]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -594,7 +641,7 @@ AS
 
 					
 GO
-/****** Object:  StoredProcedure [dbo].[spInsertVendor]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spInsertVendor]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -612,7 +659,47 @@ AS
 
 	SELECT SCOPE_IDENTITY()
 GO
-/****** Object:  StoredProcedure [dbo].[spSearchDepartment]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spMovementLedger]    Script Date: 19/09/2021 4:35:43 pm ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[spMovementLedger]
+	@TransTypeId bigint = NULL,
+	@PersonId bigint = NULL,
+	@LocationId bigint = NULL,
+	@DepartmentId bigint = NULL,
+	@PurchaseId bigint = NULL,
+	@ItemId bigint = NULL,
+	@StartDate date = NULL,
+	@EndDate date = NULL
+AS
+	select  M.MovementId, M.MovDate, M.TransTypeId, T.TransTypeName,
+		P.TagNo, I.ItemName,
+		CASE WHEN PE.Name IS NULL THEN '' ELSE PE.Name END AS [Name],  
+		CASE WHEN D.DepartmentName IS NULL THEN '' ELSE D.DepartmentName END AS DepartmentName, 
+		CASE WHEN L.LocationName IS NULL THEN '' ELSE L.LocationName END AS LocationName
+	from Movement M 
+		Left Join Person PE ON PE.PersonId = M.PersonId
+		Left Join Location L ON L.LocationId = M.LocationId
+		Inner Join Purchase P ON P.PurchaseId = M.PurchaseId
+		Inner Join Item I ON I.ItemId = P.ItemId
+		Left Join Department D ON PE.DepartmentId = D.DepartmentId
+		Inner Join TransType T ON T.TransTypeId = M.TransTypeId			
+	WHERE 1 = 1
+		AND (@TransTypeId IS NULL OR M.TransTypeId = @TransTypeId)
+		AND (@PersonId IS NULL OR M.PersonId = @PersonId)
+		AND (@LocationId IS NULL OR M.LocationId = @LocationId)
+		AND (@PurchaseId IS NULL OR M.PurchaseId = @PurchaseId)
+		AND (@ItemId IS NULL OR I.ItemId = @ItemId)
+		AND (@DepartmentId IS NULL OR D.DepartmentId = @DepartmentId)
+		AND (@StartDate IS NULL OR MovDate >= @StartDate)
+		AND (@EndDate IS NULL OR MovDate <= @EndDate)
+	ORDER BY m.MovDate 
+
+GO
+/****** Object:  StoredProcedure [dbo].[spSearchDepartment]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -627,7 +714,7 @@ AS
 	AND (@DepartmentName IS NULL OR DepartmentName LIKE '%'+@DepartmentName+'%')
 
 GO
-/****** Object:  StoredProcedure [dbo].[spSearchItem]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spSearchItem]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -644,7 +731,7 @@ AS
 	AND (@ItemDescription IS NULL OR Description LIKE '%'+@ItemDescription+'%')
 
 GO
-/****** Object:  StoredProcedure [dbo].[spSearchLocation]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spSearchLocation]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -659,7 +746,7 @@ AS
 	WHERE (@LocationId IS NULL OR LocationId = @LocationId) 
 	AND (@LocationName IS NULL OR LocationName = @LocationName)
 GO
-/****** Object:  StoredProcedure [dbo].[spSearchMovement]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spSearchMovement]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -671,7 +758,8 @@ CREATE PROCEDURE [dbo].[spSearchMovement]
 	@PersonId bigint = NULL,
 	@LocationId bigint = NULL,
 	@PurchaseId bigint = NULL,
-	@MovDate date = NULL,
+	@StartDate date = NULL,
+	@EndDate date = NULL,
 	@IsActive bit = NULL,
 	@ParentMovement bigint = NULL
 AS
@@ -685,15 +773,18 @@ AS
 		LEFT JOIN Location L ON L.LocationId = M.LocationId
 		Left Join Person P ON P.PersonId = M.PersonId		
 	WHERE (@MovementId IS NULL OR MovementId = @MovementId)
-	AND (@TransTypeId IS NULL OR TransTypeId = @TransTypeId)
-	AND (@PersonId IS NULL OR M.PersonId = @PersonId)
-	AND (@LocationId IS NULL OR M.LocationId = @LocationId)
-	AND (@PurchaseId IS NULL OR M.PurchaseId = @PurchaseId)
-	AND (@MovDate IS NULL OR MovDate = @MovDate)
-	AND (@IsActive IS NULL OR M.IsActive = @IsActive)
-	AND (@ParentMovement IS NULL OR ParentMovement = @ParentMovement)
+		AND (@TransTypeId IS NULL OR TransTypeId = @TransTypeId)
+		AND (@PersonId IS NULL OR M.PersonId = @PersonId)
+		AND (@LocationId IS NULL OR M.LocationId = @LocationId)
+		AND (@PurchaseId IS NULL OR M.PurchaseId = @PurchaseId)
+		AND (@StartDate IS NULL OR MovDate >= @StartDate)
+		AND (@EndDate IS NULL OR MovDate <= @EndDate)
+		AND (@IsActive IS NULL OR M.IsActive = @IsActive)
+		AND (@ParentMovement IS NULL OR ParentMovement = @ParentMovement)
+	ORDER BY m.MovDate 
+
 GO
-/****** Object:  StoredProcedure [dbo].[spSearchPerson]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spSearchPerson]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -716,7 +807,7 @@ AS
 		AND (@Contact IS NULL OR Contact LIKE '%'+@Contact+'%')
 		AND (@IsActive IS NULL OR IsActive = @IsActive)
 GO
-/****** Object:  StoredProcedure [dbo].[spSearchPurchase]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spSearchPurchase]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -750,7 +841,7 @@ AS
 		AND (@TagNo IS NULL OR P.TagNo LIKE '%'+@TagNo+'%')
 		AND (@TransTypeId IS NULL OR P.CurrentTransType = @TransTypeId)
 GO
-/****** Object:  StoredProcedure [dbo].[spSearchVendor]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spSearchVendor]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -774,7 +865,7 @@ AS
 		AND (@Contact IS NULL OR Contact LIKE '%'+@Contact+'%')
 		AND (@Note IS NULL OR Note LIKE '%'+@Note+'%')
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdateDepartment]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spUpdateDepartment]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -787,7 +878,7 @@ AS
 	UPDATE Department SET DepartmentName = @DepartmentName 
 	WHERE	DepartmentId = @DepartmentId
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdateItem]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spUpdateItem]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -803,7 +894,7 @@ AS
 	WHERE ItemId = @ItemId
 
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdateLocation]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spUpdateLocation]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -817,7 +908,7 @@ AS
 	SET LocationName = @LocationName
 	WHERE LocationId = @LocationId
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdateMovement]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spUpdateMovement]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -844,7 +935,7 @@ AS
 	 WHERE MovementId = @MovementId
 
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdatePerson]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spUpdatePerson]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -867,7 +958,7 @@ AS
 	WHERE	PersonId = @PersonId
 
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdatePurchase]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spUpdatePurchase]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -909,7 +1000,7 @@ AS
 	COMMIT
 					
 GO
-/****** Object:  StoredProcedure [dbo].[spUpdateVendor]    Script Date: 16/09/2021 9:04:43 pm ******/
+/****** Object:  StoredProcedure [dbo].[spUpdateVendor]    Script Date: 19/09/2021 4:35:43 pm ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
