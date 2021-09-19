@@ -94,6 +94,25 @@ namespace Haleji.SqlRepository
             return found;
         }
 
+        public DataTable GetStockSummary()
+        {
+            List<SqlParameter> pm = new List<SqlParameter>();
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(_constr))
+            {
+                con.Open();
+                DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Item.Summary, pm.ToArray());
+
+                if(ds.Tables.Count>0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+
+            return dt;
+        }
+
         public void Remove(Item entity)
         {
             List<SqlParameter> ps = new List<SqlParameter>();

@@ -20,5 +20,7 @@ namespace Haleji.RepositoryBase
 
         List<Movement> GetAllOutStock();
 
+        List<Movement> SearchMovement(Movement m, DateTime? sartDate, DateTime? endDate);
+
     }
 }

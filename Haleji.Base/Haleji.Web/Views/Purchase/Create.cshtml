@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label asp-for="ItemId" class="control-label"></label>
                 @*<input asp-for="ItemId" class="form-control" />*@
-                <select asp-for="ItemId" asp-items="@ViewBag.ItemList" class="form-control"></select>
+                <select asp-for="ItemId" asp-items="@ViewBag.ItemList" class="form-control search-list"></select>
                 <span asp-validation-for="ItemId" class="text-danger"></span>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="form-group">
                 <label asp-for="VendorId" class="control-label"></label>
                 @*<input asp-for="VendorId" class="form-control" />*@
-                <select asp-for="VendorId" asp-items="@ViewBag.VendorList" class="form-control"></select>
+                <select asp-for="VendorId" asp-items="@ViewBag.VendorList" class="form-control search-list"></select>
                 <span asp-validation-for="VendorId" class="text-danger"></span>
             </div>
         </div>
@@ -102,3 +102,11 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    $(document).ready(function () {
+        $('.search-list').select2({
+            width: '100%'
+        });
+    });
+</script>

@@ -26,17 +26,17 @@ namespace Haleji.BusinessObjects
         [DisplayName("Purchase Date")]
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime PurchaseDate { get; set; }
 
         [DisplayName("Warranty")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? StartDate { get; set; }
 
         [DisplayName("Warranty End Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? EndDate { get; set; }
 
 #nullable enable

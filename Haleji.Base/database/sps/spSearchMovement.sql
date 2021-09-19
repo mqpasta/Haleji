@@ -18,7 +18,8 @@ CREATE PROCEDURE dbo.spSearchMovement
 	@PersonId bigint = NULL,
 	@LocationId bigint = NULL,
 	@PurchaseId bigint = NULL,
-	@MovDate date = NULL,
+	@StartDate date = NULL,
+	@EndDate date = NULL,
 	@IsActive bit = NULL,
 	@ParentMovement bigint = NULL
 AS
@@ -32,12 +33,15 @@ AS
 		LEFT JOIN Location L ON L.LocationId = M.LocationId
 		Left Join Person P ON P.PersonId = M.PersonId		
 	WHERE (@MovementId IS NULL OR MovementId = @MovementId)
-	AND (@TransTypeId IS NULL OR TransTypeId = @TransTypeId)
-	AND (@PersonId IS NULL OR M.PersonId = @PersonId)
-	AND (@LocationId IS NULL OR M.LocationId = @LocationId)
-	AND (@PurchaseId IS NULL OR M.PurchaseId = @PurchaseId)
-	AND (@MovDate IS NULL OR MovDate = @MovDate)
-	AND (@IsActive IS NULL OR M.IsActive = @IsActive)
-	AND (@ParentMovement IS NULL OR ParentMovement = @ParentMovement)
+		AND (@TransTypeId IS NULL OR TransTypeId = @TransTypeId)
+		AND (@PersonId IS NULL OR M.PersonId = @PersonId)
+		AND (@LocationId IS NULL OR M.LocationId = @LocationId)
+		AND (@PurchaseId IS NULL OR M.PurchaseId = @PurchaseId)
+		AND (@StartDate IS NULL OR MovDate >= @StartDate)
+		AND (@EndDate IS NULL OR MovDate <= @EndDate)
+		AND (@IsActive IS NULL OR M.IsActive = @IsActive)
+		AND (@ParentMovement IS NULL OR ParentMovement = @ParentMovement)
+	ORDER BY m.MovDate 
+
 GO
 

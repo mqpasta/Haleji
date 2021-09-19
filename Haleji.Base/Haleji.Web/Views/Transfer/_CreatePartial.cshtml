@@ -14,31 +14,31 @@
                     <!-- Modal Body -->
                     <div class="row">
                         <div class="col-md-8">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <input asp-for="PurchaseId" class="form-control" type="hidden" />
-                                <input asp-for="TransactionTypeId" class="form-control" type="hidden" />
-                                <div class="form-group">
-                                    <label asp-for="MovDate" class="control-label"></label>
-                                    <input asp-for="MovDate" class="form-control" />
-                                    <span asp-validation-for="MovDate" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="ItemName" class="control-label"></label>
-                                    <input asp-for="ItemName" class="form-control" readonly />
-                                    <span asp-validation-for="ItemName" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="PersonId" class="control-label"></label>
-                                    @*<input asp-for="PersonId" class="form-control" />*@
-                                    <select asp-for="PersonId" asp-items="@ViewBag.PersonList" class="form-control"></select>
-                                    <span asp-validation-for="PersonId" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="LocationId" class="control-label"></label>
-                                    @*<input asp-for="LocationId" class="form-control" />*@
-                                    <select asp-for="LocationId" asp-items="@ViewBag.LocationList" class="form-control"></select>
-                                    <span asp-validation-for="LocationId" class="text-danger"></span>
-                                </div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input asp-for="PurchaseId" class="form-control" type="hidden" />
+                            <input asp-for="TransactionTypeId" class="form-control" type="hidden" />
+                            <div class="form-group">
+                                <label asp-for="MovDate" class="control-label"></label>
+                                <input asp-for="MovDate" class="form-control" />
+                                <span asp-validation-for="MovDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ItemName" class="control-label"></label>
+                                <input asp-for="ItemName" class="form-control" readonly />
+                                <span asp-validation-for="ItemName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PersonId" class="control-label"></label>
+                                @*<input asp-for="PersonId" class="form-control" />*@
+                                <select asp-for="PersonId" asp-items="@ViewBag.PersonList" class="form-control search-list"></select>
+                                <span asp-validation-for="PersonId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="LocationId" class="control-label"></label>
+                                @*<input asp-for="LocationId" class="form-control" />*@
+                                <select asp-for="LocationId" asp-items="@ViewBag.LocationList" class="form-control search-list"></select>
+                                <span asp-validation-for="LocationId" class="text-danger"></span>
+                            </div>
                         </div>
                     </div>
 
@@ -59,3 +59,13 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+<script>
+    $(document).ready(function () {
+        $('.search-list').select2({
+            width: '100%',
+            dropdownParent: $('#transferItem')
+        });
+    });
+</script>

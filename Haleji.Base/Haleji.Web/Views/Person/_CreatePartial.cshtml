@@ -1,5 +1,5 @@
 ﻿@model Haleji.BusinessObjects.Person
-    <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="createPerson" tabindex="-1" role="dialog" aria-labelledby="createPersonTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -23,8 +23,9 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="DepartmentId" class="control-label"></label>
-                                @*<input asp-for="DepartmentId" class="form-control" />*@
-                                <select asp-for="DepartmentId" asp-items="@ViewBag.DepartmentList" class="form-control search-list"></select>
+                                <div class="col-lg">
+                                    <select asp-for="DepartmentId" asp-items="@ViewBag.DepartmentList" class="form-control search-list"></select>
+                                </div>
                                 <span asp-validation-for="DepartmentId" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -55,12 +56,14 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    <script>
-    $(document).ready(function () {
-        $('.search-list').select2();
-    });
-    </script>
-
 }
 
+
+<script>
+    $(document).ready(function () {
+        $('.search-list').select2({
+            width: '100%',
+            dropdownParent: $('#createPerson')
+        });
+    });
+</script>
