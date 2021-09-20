@@ -8,7 +8,6 @@ services:
     image: haleji-web
     environment:
     - ASPNETCORE_ENVIRONMENT=Development
-    - ASPNETCORE_URLS=https://+:443;http://+:80
     - DB_NAME=Haleji
     - DB_SERVER=db
     - DB_USERNAME=sa
