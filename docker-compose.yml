@@ -15,7 +15,7 @@ services:
     - TRUSTED=False
     build:
       context: ./Haleji.Base
-      dockerfile: Dockerfile
+      dockerfile: Haleji.Base/Dockerfile
     ports:
     - "80"
     - "443"
