@@ -11,6 +11,7 @@ services:
     - ASPNETCORE_URLS=https://+:443;http://+:80
     - DB_NAME=Haleji
     - DB_SERVER=db
+    - DB_USERNAME=sa
     - DB_PASSWORD=Admin.1234
     - TRUSTED=False
     build:
