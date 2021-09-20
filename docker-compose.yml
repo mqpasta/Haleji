@@ -17,7 +17,7 @@ services:
       context: ./Haleji.Base
       dockerfile: Haleji.Base/Dockerfile
     ports:
-    - "80"
+    - "801:80"
     - "443"
     networks:
     - uit-inventory
