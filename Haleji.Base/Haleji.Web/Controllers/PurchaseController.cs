@@ -128,5 +128,18 @@ namespace Haleji.Web.Controllers
                 return BadRequest();
             }
         }
+
+        public ActionResult View(int id)
+        {
+            var found = _factory.PurchaseRepository.GetById(id);
+            if (found != null)
+            {
+                return PartialView(ViewHelper.VIEW_PARTIAL, found);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }
