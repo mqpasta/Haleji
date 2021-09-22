@@ -37,7 +37,8 @@ AS
 			PONumber = @PONumber, 
 			InvoiceNumber = @InvoiceNumber, 
 			Description = @Description, 
-			TagNo = @TagNo
+			TagNo = @TagNo,
+			CurrentTransType = @TransTypeId
 	WHERE	PurchaseId = @PurchaseId
 
 	UPDATE	Movement
