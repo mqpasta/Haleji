@@ -2039,4 +2039,150 @@ AS
 	WHERE	VendorId = @VendorId
 GO
 
+IF EXISTS(
+	SELECT * 
+	FROM INFORMATION_SCHEMA.ROUTINES
+	WHERE SPECIFIC_SCHEMA = N'dbo'
+	AND SPECIFIC_NAME = N'spGetAllItemDetails'
+)
+	DROP PROCEDURE dbo.spGetAllItemDetails
+GO
+
+CREATE PROCEDURE dbo.spGetAllItemDetails
+AS
+	SELECT ID.*,I.ItemName
+	FROM ItemDetails ID inner join Item I on ID.ItemId = I.ItemId
+
+GO
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'spInsertItemDetails' 
+)
+   DROP PROCEDURE dbo.spInsertItemDetails
+GO
+
+CREATE PROCEDURE dbo.spInsertItemDetails
+	 @ItemId bigint ,
+	 @Specifications nvarchar(500) = NULL
+AS
+	DECLARE @ItemDetailsId bigint
+
+	BEGIN TRAN
+	INSERT INTO		ItemDetails(
+						ItemId,Specifications)
+					VALUES (@ItemId, @Specifications)
+	SET @ItemDetailsId = SCOPE_IDENTITY()
+
+	COMMIT
+
+					
+GO
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'spSearchItemDetails' 
+)
+   DROP PROCEDURE dbo.spSearchItemDetails
+GO
+
+CREATE PROCEDURE dbo.spSearchItemDetails
+	 @ItemDetailsId bigint = NULL,
+	 @ItemId bigint = NULL,
+	 @Specifications nvarchar(50) = NULL
+AS
+	SELECT ID.*,I.ItemName
+	FROM ItemDetails ID inner join Item I on ID.ItemId = I.ItemId
+
+	WHERE (@ItemDetailsId IS NULL OR ID.ItemDetailsId = @ItemDetailsId)
+		AND (@ItemId IS NULL OR I.ItemId = @ItemId)
+		AND (@Specifications IS NULL OR ID.Specifications LIKE '%'+@Specifications+'%')
+GO
+
+
+IF EXISTS(
+	SELECT * 
+	FROM INFORMATION_SCHEMA.ROUTINES
+	WHERE SPECIFIC_SCHEMA = N'dbo'
+	AND SPECIFIC_NAME = N'spUpdateItemDetails'
+)
+
+	DROP PROCEDURE dbo.spUpdateItemDetails
+GO
+
+CREATE PROCEDURE dbo.spUpdateItemDetails
+	@ItemDetailsId bigint,
+	@ItemId bigint,
+	@Specifications nvarchar(500) = NULL
+
+AS
+
+	BEGIN TRAN
+
+	UPDATE ItemDetails
+	SET		ItemId = @ItemId,
+			Specifications = @Specifications
+
+	WHERE ItemDetailsId = @ItemDetailsId
+
+	COMMIT
+
+GO
+
+IF EXISTS(
+	SELECT *
+	FROM INFORMATION_SCHEMA.ROUTINES
+	WHERE SPECIFIC_SCHEMA = N'dbo'
+	AND SPECIFIC_NAME = N'spDeleteItemDetails'
+)
+	
+	DROP PROCEDURE dbo.spDeleteItemDetails
+GO
+
+CREATE PROCEDURE dbo.spDeleteItemDetails
+	@ItemId bigint
+
+AS 
+	DELETE FROM ItemDetails WHERE ItemId = @ItemId;
+
+GO
+
+-- purchasedetails stored procedures
+
+IF EXISTS(
+	SELECT *
+	FROM INFORMATION_SCHEMA.ROUTINES
+	WHERE SPECIFIC_SCHEMA = N'dbo'
+	AND SPECIFIC_NAME = N'spDeletePurchaseDetails'
+
+)
+	DROP PROCEDURE dbo.spDeletePurchaseDetails
+
+GO
+
+CREATE PROCEDURE dbo.spDeletePurchaseDetails
+	@PurchaseId bigint
+
+AS 
+	delete PurchaseDetails from PurchaseDetails 
+	inner join ItemDetails on ItemDetails.ItemDetailsId = PurchaseDetails.ItemDetailsId 
+	inner join Purchase on Purchase.ItemId = ItemDetails.ItemId 
+	where PurchaseDetails.PurchaseId=@PurchaseId;
+
+GO
+
 
