@@ -13,7 +13,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "DB_USERNAME": "Value",
-        "DB_NAME": "Haleji_Test",
+        "DB_NAME": "Haleji",
         "DB_PASSWORD": "Value",
         "DB_SERVER": ".\\sqlexpress",
         "ASPNETCORE_ENVIRONMENT": "Development",

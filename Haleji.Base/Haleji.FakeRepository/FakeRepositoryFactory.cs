@@ -58,5 +58,9 @@ namespace Haleji.FakeRepository
         public IStockRepository StockRepository => throw new System.NotImplementedException();
 
         public IVendorRepository VendorRepository => throw new System.NotImplementedException();
+
+        public IItemDetailsRepository ItemDetailsRepository => throw new System.NotImplementedException();
+        public IPurchaseDetailsRepository PurchaseDetailsRepository => throw new System.NotImplementedException();
+
     }
 }
