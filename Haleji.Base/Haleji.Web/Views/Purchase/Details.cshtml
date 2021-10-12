@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Haleji.BusinessObjects.Purchase>
+
+@{
+    ViewData["Title"] = "Details";
+    // Layout = "~/Views/Shared/_ModalTemplate.cshtml";
+}
+
+<h1>Edit Purchase Details</h1>
+
+
+<form asp-action="Save">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PurchaseDetailsId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PurchaseId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemDetailsId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Specifications)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Key)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PurchaseDetailsId)
+                        <input type="hidden" name="PurchaseId" value="@item.PurchaseId" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PurchaseId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemDetailsId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Specifications)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Description)*@
+                        <input type="text" name="@item.PurchaseDetailsId" value="@item.Description" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Key)
+                    </td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="row">
+            <input type="submit" value="Save" class="btn btn-primary" asp-action="Save" />
+        </div>
+
+</form>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

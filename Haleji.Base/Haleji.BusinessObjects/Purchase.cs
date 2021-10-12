@@ -56,6 +56,19 @@ namespace Haleji.BusinessObjects
 
         public long? CurrentTransType { get; set; }
 
+        // for purchase details page
+
+        [DisplayName("Purchase Details ID")]
+        [Key]
+        public long PurchaseDetailsId { get; set; }
+
+        [DisplayName("Specifications")]
+        public string Specifications { get; set; }
+
+        [DisplayName("Item Details ID")]
+        [Required]
+        public long ItemDetailsId { get; set; }
+
         public long Key
         {
             get { return this.PurchaseId; }

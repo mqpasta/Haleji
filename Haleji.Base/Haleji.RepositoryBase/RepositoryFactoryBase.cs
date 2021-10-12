@@ -16,5 +16,8 @@ namespace Haleji.RepositoryBase
         protected IPurchaseRepository _purchaseRepository;
         protected IStockRepository _stockRepository;
         protected IVendorRepository _vendorRepository;
+        protected IItemDetailsRepository _itemdetailsRepository;
+        protected IPurchaseDetailsRepository _purchasedetailsRepository;
+
     }
 }

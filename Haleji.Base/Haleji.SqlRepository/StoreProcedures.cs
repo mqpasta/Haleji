@@ -87,10 +87,17 @@ namespace Haleji.SqlRepository
             public const string Delete = "spDeletePurchase";
             public const string GetAll = "spGetAllPurchase";
             public const string Search = "spSearchPurchase";
+            public const string GetSpecs = "spGetItembyId";
+            public const string UpdatePurchaseDetails = "spUpdatePurchaseDetails";
 
             public static SqlParameter GetPurchaseId(object v)
             {
                 return SQLHelper.CreateSqlParam("@PurchaseId", v);
+            }
+
+            public static SqlParameter GetPurchaseDetailsId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@PurchaseDetailsId", v);
             }
 
             public static SqlParameter GetItemId(object v)
@@ -150,6 +157,8 @@ namespace Haleji.SqlRepository
             public const string Delete = "spDeletePurchaseDetails";
             public const string GetAll = "spGetAllPurchaseDetails";
             public const string Search = "spSearchPurchaseDetails";
+            public const string GetSpecs = "spGetItembyId";
+            public const string GetAllId = "spGetAllPurchaseDetailsId";
 
             public static SqlParameter GetPurchaseDetailsId(object v)
             {

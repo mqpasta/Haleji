@@ -18,12 +18,18 @@ namespace Haleji.BusinessObjects
         [Required]
         public long ItemDetailsId { get; set; }
 
+        [DisplayName("Item Name")]
+        public string ItemName { get; set; }
+
         [DisplayName("Product Description")]
         public string Description { get; set; }
 
+        [DisplayName("Specifications")]
+        public string Specifications { get; set; }
+
         public long Key
         {
-            get { return this.PurchaseDetailsId; }
+            get { return this.PurchaseId; }
         }
 
         public void Update(IEntity entity)
