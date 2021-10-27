@@ -6,7 +6,19 @@
     <title>@ViewData["Title"] - Haleji</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+
+
+
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
 </head>
 <body>
     <header>
@@ -22,8 +34,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="Item" asp-action="Index">Items</a>
+                        <li class="nav-item dropdown text-white">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Item</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Item" asp-action="Index">Items</a>
+                                <a class="dropdown-item" asp-controller="ItemDetails" asp-action="Index">Item Details</a>
+                            </div>
+                     
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-controller="Vendor" asp-action="Index">Vendors</a>
@@ -45,6 +62,16 @@
                                 <a class="dropdown-item" asp-controller="Person" asp-action="Index">Persons</a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown text-white">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+                                Reports
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Report" asp-action="Ledger">Ledgers</a>
+                                <a class="dropdown-item" asp-controller="Report" asp-action="Issued">Issued Items</a>
+                                <a class="dropdown-item" asp-controller="Report" asp-action="StockSummary">Stock Summary</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -61,10 +88,6 @@
             &copy; 2021 - Haleji - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
 
     @await RenderSectionAsync("Scripts", required: false)

@@ -186,5 +186,73 @@ namespace Haleji.SqlRepository
 
             return movements;
         }
+
+        public List<Movement> SearchMovement(Movement m, DateTime? startDate, DateTime? endDate)
+        {
+            List<Movement> movements = new();
+
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                StoredProcedures.Movement.GetPersonId(m.PersonId),
+                StoredProcedures.Movement.GetLocationId(m.LocationId),
+                StoredProcedures.Movement.GetPurchaseId(m.PurchaseId),
+                StoredProcedures.Movement.GetStartDate(startDate),
+                StoredProcedures.Movement.GetEndDate(endDate),
+                StoredProcedures.Movement.GetIsActive(m.IsActive),
+                StoredProcedures.Movement.GetParentMovement(m.ParentMovementId),
+                StoredProcedures.Movement.GetTransType(m.TransactionTypeId)
+            };
+
+            using (SqlConnection con = new SqlConnection(_constr))
+            {
+                con.Open();
+                DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Movement.Search, parameters.ToArray());
+                con.Close();
+
+                if (ds.Tables.Count > 0)
+                {
+                    foreach (DataRow r in ds.Tables[0].Rows)
+                    {
+                        movements.Add(ExtractRow(r));
+                    }
+                }
+            }
+
+            return movements;
+        }
+
+        public DataTable SearchLedger(DateTime? startDate, DateTime? endDate, 
+                                    long? personId, long? departmentId, long? itemId, long? locationId,
+                                    long? transTypeId, long? purchaseId)
+        {
+            DataTable dt = new DataTable();
+            List<SqlParameter> pm = new()
+            {
+                StoredProcedures.Movement.GetStartDate(startDate),
+                StoredProcedures.Movement.GetEndDate(endDate),
+                StoredProcedures.Movement.GetPersonId(personId),
+                StoredProcedures.Movement.GetLocationId(locationId),
+                StoredProcedures.Movement.GetTransType(transTypeId),
+                StoredProcedures.Movement.GetPurchaseId(purchaseId),
+                StoredProcedures.Department.GetDeptId(departmentId),
+                StoredProcedures.Item.GetItemId(itemId)
+            };
+
+            using(SqlConnection con = new SqlConnection(_constr))
+            {
+                con.Open();
+                DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Movement.Ledger, pm.ToArray());
+                con.Close();
+
+                if(ds.Tables.Count>0)
+                {
+                    dt = ds.Tables[0];
+                }
+            }
+
+            return dt;
+        }
+
+        
     }
 }

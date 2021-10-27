@@ -8,7 +8,7 @@
 
 <div id="ModalPlaceHolder"></div>
 
-<table class="table">
+<table class="table" id="itemList">
     <thead>
         <tr>
             <th>
@@ -42,3 +42,10 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#itemList').DataTable();
+    });
+</script>

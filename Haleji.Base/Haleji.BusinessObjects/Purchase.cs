@@ -26,17 +26,17 @@ namespace Haleji.BusinessObjects
         [DisplayName("Purchase Date")]
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime PurchaseDate { get; set; }
 
         [DisplayName("Warranty")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? StartDate { get; set; }
 
         [DisplayName("Warranty End Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? EndDate { get; set; }
 
 #nullable enable
@@ -55,6 +55,19 @@ namespace Haleji.BusinessObjects
         public string TagNo { get; set; }
 
         public long? CurrentTransType { get; set; }
+
+        // for purchase details page
+
+        [DisplayName("Purchase Details ID")]
+        [Key]
+        public long PurchaseDetailsId { get; set; }
+
+        [DisplayName("Specifications")]
+        public string Specifications { get; set; }
+
+        [DisplayName("Item Details ID")]
+        [Required]
+        public long ItemDetailsId { get; set; }
 
         public long Key
         {

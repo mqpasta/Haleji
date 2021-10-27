@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Haleji.RepositoryBase;
 using Haleji.BusinessObjects;
+using System.Data;
 
 namespace Haleji.FakeRepository
 {
@@ -48,7 +49,10 @@ namespace Haleji.FakeRepository
 
     public class ItemRepository : FakeRepositoryBase<Item>, IItemRepository
     {
-
+        public DataTable GetStockSummary()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class DepartmentRepository : FakeRepositoryBase<Department>, IDepartmentRepository

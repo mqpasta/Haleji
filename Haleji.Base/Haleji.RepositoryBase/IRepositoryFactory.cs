@@ -16,5 +16,8 @@ namespace Haleji.RepositoryBase
         IPurchaseRepository PurchaseRepository { get; }
         IStockRepository StockRepository { get; }
         IVendorRepository VendorRepository { get; }
+        IItemDetailsRepository ItemDetailsRepository { get; }
+        IPurchaseDetailsRepository PurchaseDetailsRepository { get; }
+
     }
 }

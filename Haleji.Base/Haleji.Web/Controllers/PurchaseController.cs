@@ -22,9 +22,7 @@ namespace Haleji.Web.Controllers
         // GET: PurchaseController
         public ActionResult Index()
         {
-            return View(_factory.PurchaseRepository.GetByTransactionType(
-                Convert.ToInt32(TransactionType.Issued)
-                ));
+            return View(_factory.PurchaseRepository.GetAll());
         }
 
         // GET: PurchaseController/Create
@@ -130,5 +128,53 @@ namespace Haleji.Web.Controllers
                 return BadRequest();
             }
         }
+
+        public ActionResult View(int id)
+        {
+            var found = _factory.PurchaseRepository.GetById(id);
+            if (found != null)
+            {
+                return PartialView(ViewHelper.VIEW_PARTIAL, found);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        // purchase details coming from purchase details table
+        public ActionResult Details(int id)
+        {
+            var found = _factory.PurchaseRepository.GetByPurchaseId(id);
+           
+            if (found != null)
+            {
+                return View("Details", found);
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Save(IFormCollection formCollection)
+        {
+            var pid = formCollection["PurchaseId"]; // {11,11,11,11}
+            
+            List<PurchaseDetails> purchaseDetails = _factory.PurchaseDetailsRepository.GetAllPurchaseDetails(long.Parse(pid[0]));
+
+            foreach(PurchaseDetails pd in purchaseDetails)
+            {
+                pd.Description = Convert.ToString(formCollection[pd.PurchaseDetailsId.ToString()]);
+            }
+
+            _factory.PurchaseDetailsRepository.Update(purchaseDetails);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
     }
 }

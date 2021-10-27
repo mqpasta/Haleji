@@ -14,7 +14,7 @@
     <a asp-action="Issued">Receive an Item</a>
 </p>
 
-<table class="table">
+<table class="table" id="receivedList">
     <thead>
         <tr>
             <th>
@@ -52,7 +52,7 @@
                     @Html.DisplayFor(modelItem => item.LocationName)
                 </td>
                 <td>
-                   @Enum.GetName(typeof(TransactionType), item.TransactionTypeId)
+                    @Enum.GetName(typeof(TransactionType), item.TransactionTypeId)
                 </td>
                 <td>
                     <button type="button" class="btn btn-link" data-toggle="ajax-modal"
@@ -66,3 +66,9 @@
     </tbody>
 </table>
 
+
+<script>
+    $(document).ready(function () {
+        $('#receivedList').DataTable();
+    });
+</script>

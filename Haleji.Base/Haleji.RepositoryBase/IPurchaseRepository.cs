@@ -11,5 +11,9 @@ namespace Haleji.RepositoryBase
     public interface IPurchaseRepository : IGenericRepository<Purchase>
     {
         List<Purchase> GetByTransactionType(long transType);
+
+        List<Purchase> GetByPurchaseId(long id);
+
+        /*public void UpdatePurchaseDetails(Purchase entity);*/
     }
 }

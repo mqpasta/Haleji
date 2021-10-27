@@ -1,4 +1,9 @@
-﻿@model IEnumerable<Haleji.BusinessObjects.Purchase>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<Haleji.BusinessObjects.Purchase>
 
 @{
     ViewData["Title"] = "Purchases";
@@ -11,7 +16,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="purchaseList">
     <thead>
         <tr>
             <th>
@@ -29,12 +34,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.InvoiceNumber)
             </th>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
+            </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>*@
             <th></th>
         </tr>
     </thead>
@@ -60,21 +65,33 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.InvoiceNumber)
                 </td>
-                <td>
+               @* <td>
                     @Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Key }) |
-                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                    <button type="button" class="btn btn-link" data-toggle="ajax-modal"
-                            data-target="#deletePurchase" data-url="@Url.Action("Delete", "Purchase", new { id = item.Key})">
-                        Delete
-                    </button>
-                </td>
+                </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Key }) |
+                <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                        data-target="#deletePurchase" data-url="@Url.Action("Delete", "Purchase", new { id = item.Key})">
+                    Delete
+                </button>
+                |
+                <button type="button" class="btn btn-link" data-toggle="ajax-modal"
+                        data-target="#viewPurchase" data-url="@Url.Action("View", "Purchase", new { id = item.Key})">
+                    View
+                </button> |
+                @Html.ActionLink("Details", "Details", new { id = item.Key })
+            </td>
             </tr>
         }
     </tbody>
 </table>
+
+
+<script>
+    $(document).ready(function () {
+        $('#purchaseList').DataTable();
+    });
+</script>

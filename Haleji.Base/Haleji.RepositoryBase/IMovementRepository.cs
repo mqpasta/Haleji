@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,5 +21,10 @@ namespace Haleji.RepositoryBase
 
         List<Movement> GetAllOutStock();
 
+        List<Movement> SearchMovement(Movement m, DateTime? sartDate, DateTime? endDate);
+
+        public DataTable SearchLedger(DateTime? startDate, DateTime? endDate,
+                                            long? personId, long? departmentId, long? itemId, long? locationId,
+                                            long? transTypeId, long? purchaseId);
     }
 }
