@@ -19,11 +19,13 @@ AS
 	BEGIN TRAN
 
 	UPDATE ItemDetails
-	SET		ItemId = @ItemId,
-			Specifications = @Specifications
+	SET		Specifications = @Specifications
 
-	WHERE ItemDetailsId = @ItemDetailsId
+	WHERE ItemDetailsId = @ItemDetailsId and ItemId = @ItemId
 
 	COMMIT
 
 GO
+
+select * from ItemDetails;
+select * from Purchasedetails;

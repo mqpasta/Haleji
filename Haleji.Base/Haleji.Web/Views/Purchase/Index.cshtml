@@ -81,7 +81,8 @@
                 <button type="button" class="btn btn-link" data-toggle="ajax-modal"
                         data-target="#viewPurchase" data-url="@Url.Action("View", "Purchase", new { id = item.Key})">
                     View
-                </button>
+                </button> |
+                @Html.ActionLink("Details", "Details", new { id = item.Key })
             </td>
             </tr>
         }

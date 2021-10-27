@@ -76,6 +76,27 @@ namespace Haleji.SqlRepository
         }
 
         public IStockRepository StockRepository => throw new NotImplementedException();
+        public IItemDetailsRepository ItemDetailsRepository
+        {
+            get
+            {
+                if (_itemdetailsRepository == null)
+                    _itemdetailsRepository = new SqlItemDetailsRepository();
+
+                return _itemdetailsRepository;
+            }
+        }
+        public IPurchaseDetailsRepository PurchaseDetailsRepository
+        {
+            get
+            {
+                if (_purchasedetailsRepository == null)
+                    _purchasedetailsRepository = new SqlPurchaseDetailsRepository();
+
+                return _purchasedetailsRepository;
+            }
+
+        }
 
         public IVendorRepository VendorRepository
         {

@@ -2186,3 +2186,44 @@ AS
 GO
 
 
+IF EXISTS (
+	SELECT *
+	FROM INFORMATION_SCHEMA.ROUTINES
+	WHERE SPECIFIC_SCHEMA = N'dbo'
+	AND SPECIFIC_NAME = N'spSelectItemDetail'
+)
+
+	DROP PROCEDURE dbo.spSelectItemDetail
+GO
+
+CREATE PROCEDURE dbo.spSelectItemDetail
+	@ItemId bigint
+
+AS
+	SELECT specifications FROM ItemDetails WHERE ItemId = @ItemId
+
+GO
+
+IF EXISTS(
+	SELECT *
+	FROM INFORMATION_SCHEMA.ROUTINES
+	WHERE SPECIFIC_SCHEMA = N'dbo'
+	AND SPECIFIC_NAME = N'spGetItembyId'
+)
+	DROP PROCEDURE dbo.spGetItembyId
+
+GO
+
+CREATE PROCEDURE dbo.spGetItembyId
+	@PurchaseId bigint
+
+AS
+	
+	select PD.*, ID.Specifications
+	from PurchaseDetails PD 
+	Inner Join ItemDetails ID ON PD.ItemDetailsId = ID.ItemDetailsId
+	Where PurchaseId = @PurchaseId
+
+GO
+
+

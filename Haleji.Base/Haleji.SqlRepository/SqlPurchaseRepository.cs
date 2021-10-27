@@ -94,6 +94,51 @@ namespace Haleji.SqlRepository
             };
         }
 
+        private static Purchase ExtractJoinRow(DataRow r)
+        {
+            var pdid = r["PurchaseDetailsId"];
+            var pid = r["PurchaseId"];
+            var idid = r["ItemDetailsId"];
+            var d = r["Description"];
+            var specs = r["Specifications"];
+            
+
+            return new Purchase()
+            {
+                PurchaseDetailsId = Convert.ToInt64(pdid),
+                PurchaseId = Convert.ToInt64(pid),
+                ItemDetailsId = Convert.ToInt64(idid),
+                Description = DBNull.Value.Equals(d) ? null : Convert.ToString(d),
+                Specifications = DBNull.Value.Equals(specs) ? null : Convert.ToString(specs),
+
+            };
+
+        }
+
+        public List<Purchase> GetByPurchaseId(long id)
+        {
+            List<Purchase> pd = new List<Purchase>();
+            List<SqlParameter> ps = new()
+            {
+                StoredProcedures.Purchase.GetPurchaseId(id)
+            }; 
+            using (SqlConnection con = new SqlConnection(_constr))
+            {
+                con.Open();
+                DataSet ds = SQLHelper.LoadData(con, StoredProcedures.Purchase.GetSpecs,ps.ToArray());
+                con.Close();
+
+                if (ds.Tables.Count > 0)
+                {
+                    foreach (DataRow r in ds.Tables[0].Rows)
+                        pd.Add(ExtractJoinRow(r));
+                }
+            }
+
+            return pd;
+
+        }
+
         public Purchase GetById(long id)
         {
             Purchase p = new Purchase();
@@ -159,6 +204,23 @@ namespace Haleji.SqlRepository
             }
         }
 
+        // for saving description
+        /*public void UpdatePurchaseDetails(Purchase entity)
+        {
+            List<SqlParameter> pm = new()
+            {
+                StoredProcedures.Purchase.GetPurchaseDetailsId(entity.PurchaseDetailsId),
+                StoredProcedures.Purchase.GetPurchaseId(entity.PurchaseId),
+                StoredProcedures.Purchase.GetDescription(entity.Description)
+            };
+            using (SqlConnection con = new(_constr))
+            {
+                con.Open();
+                SQLHelper.Execute(con, StoredProcedures.Purchase.UpdatePurchaseDetails, pm.ToArray());
+                con.Close();
+            }
+        }*/
+
         public List<Purchase> GetByTransactionType(long transType)
         {
             List<Purchase> purchases = new();
@@ -182,5 +244,6 @@ namespace Haleji.SqlRepository
 
             return purchases;
         }
+
     }
 }
