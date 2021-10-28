@@ -9,6 +9,13 @@ namespace Haleji.RepositoryBase
 {
     public interface IPurchaseDetailsRepository : IGenericRepository<PurchaseDetails>
     {
+        List<PurchaseDetails> GetByPurchaseId(long id);
+
+        public void Update(List<PurchaseDetails> purchaseDetails);
+
+        public List<PurchaseDetails> GetAllPurchaseDetails(long id);
+
+
 
     }
     

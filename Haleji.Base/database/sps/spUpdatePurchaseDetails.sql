@@ -12,7 +12,7 @@ GO
 
 CREATE PROCEDURE dbo.spUpdatePurchaseDetails
 	@PurchaseDetailsId bigint,
-	@PurchaseId bigint,
+    @PurchaseId bigint,
 	@ItemDetailsId bigint,
 	@Description nvarchar(500) = NULL
 
@@ -21,11 +21,10 @@ AS
 	BEGIN TRAN
 
 	UPDATE PurchaseDetails
-	SET		PurchaseId = @PurchaseId,
-			ItemDetailsId = @ItemDetailsId,
-			Description = @Description
+	SET		Description = @Description
 
 	WHERE PurchaseDetailsId = @PurchaseDetailsId
+    and PurchaseId = @PurchaseId and ItemDetailsId = @ItemDetailsId
 
 	COMMIT
 
