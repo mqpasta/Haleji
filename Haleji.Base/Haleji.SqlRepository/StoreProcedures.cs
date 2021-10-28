@@ -87,10 +87,17 @@ namespace Haleji.SqlRepository
             public const string Delete = "spDeletePurchase";
             public const string GetAll = "spGetAllPurchase";
             public const string Search = "spSearchPurchase";
+            public const string GetSpecs = "spGetItembyId";
+            public const string UpdatePurchaseDetails = "spUpdatePurchaseDetails";
 
             public static SqlParameter GetPurchaseId(object v)
             {
                 return SQLHelper.CreateSqlParam("@PurchaseId", v);
+            }
+
+            public static SqlParameter GetPurchaseDetailsId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@PurchaseDetailsId", v);
             }
 
             public static SqlParameter GetItemId(object v)
@@ -142,6 +149,36 @@ namespace Haleji.SqlRepository
                 return SQLHelper.CreateSqlParam("@TransTypeId", v);
             }
 
+        }
+        internal static class PurchaseDetails
+        {
+            public const string Insert = "spInsertPurchaseDetails";
+            public const string Update = "spUpdatePurchaseDetails";
+            public const string Delete = "spDeletePurchaseDetails";
+            public const string GetAll = "spGetAllPurchaseDetails";
+            public const string Search = "spSearchPurchaseDetails";
+            public const string GetSpecs = "spGetItembyId";
+            public const string GetAllId = "spGetAllPurchaseDetailsId";
+
+            public static SqlParameter GetPurchaseDetailsId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@PurchaseDetailsId", v);
+            }
+
+            public static SqlParameter GetPurchaseId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@PurchaseId", v);
+            }
+
+            public static SqlParameter GetItemDetailsID(object v)
+            {
+                return SQLHelper.CreateSqlParam("@ItemDetailsId", v);
+            }
+
+            public static SqlParameter GetDescription(object v)
+            {
+                return SQLHelper.CreateSqlParam("@Description", v);
+            }
         }
         internal static class Vendor
         {
@@ -232,6 +269,30 @@ namespace Haleji.SqlRepository
                 return SQLHelper.CreateSqlParam(ItemDesc, v);
             }
 
+        }
+
+        internal static class ItemDetails
+        {
+            public const string Insert = "spInsertItemDetails";
+            public const string Update = "spUpdateItemDetails";
+            public const string Delete = "spDeleteItemDetails";
+            public const string GetAll = "spGetAllItemDetails";
+            public const string Search = "spSearchItemDetails";
+
+            public static SqlParameter GetItemDetailsId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@ItemDetailsId", v);
+            }
+
+            public static SqlParameter GetItemId(object v)
+            {
+                return SQLHelper.CreateSqlParam("@ItemId", v);
+            }
+
+            public static SqlParameter GetSpecifications(object v)
+            {
+                return SQLHelper.CreateSqlParam("@Specifications", v);
+            }
         }
 
         internal static class Department

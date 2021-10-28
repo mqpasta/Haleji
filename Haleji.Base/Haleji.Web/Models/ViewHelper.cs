@@ -20,6 +20,8 @@ namespace Haleji.Web.Models
         public static readonly string CREATE_PARTIAL = "_CreatePartial";
         public static readonly string DELETE_PARTIAL = "_DeletePartial";
         public static readonly string EDIT_PARTIAL = "_EditPartial";
+        // for view
+        public static readonly string VIEW_PARTIAL = "_ViewPartial";
 
         public static SelectList DepartmentList(IRepositoryFactory _factory, long? departmentId = null)
         {
