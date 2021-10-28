@@ -52,8 +52,8 @@ select	Item.*,
 		ISNULL(S.QTY,0) as ScrappedQty
 from	Item 
 			LEFT JOIN cte_avilable A ON A.ItemId = Item.ItemId
-			LEFT JOIN cte_Issued I ON I.ItemId = A.ItemId
-			LEFT JOIN cte_OutOfStock O ON O.ItemId = A.ItemId
-			LEFT JOIN cte_scrap S ON S.ItemId = A.ItemId
+			LEFT JOIN cte_Issued I ON I.ItemId = Item.ItemId
+			LEFT JOIN cte_OutOfStock O ON O.ItemId = Item.ItemId
+			LEFT JOIN cte_scrap S ON S.ItemId = Item.ItemId
 
 GO
